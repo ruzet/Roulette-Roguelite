@@ -26,6 +26,11 @@ func TotalStaked():
 	for Bet in Bets: Total += Bet.Stake
 	return Total
 
+func Clear():
+	Balance += TotalStaked()
+	Bets.clear()
+	Changed.emit()
+
 func ResolveBets(Results: Array[PocketData]) -> Dictionary:
 	var Staked = TotalStaked()
 	var Returned = 0.0

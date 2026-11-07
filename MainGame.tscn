@@ -3,25 +3,166 @@
 [ext_resource type="Script" uid="uid://ce5ci53vnlkwn" path="res://RouletteWheel.gd" id="1_3tbxw"]
 [ext_resource type="Script" uid="uid://dpn55ghxflkd2" path="res://MainGame.gd" id="1_ws5ob"]
 [ext_resource type="Script" uid="uid://b5jixhgunqxc" path="res://BettingTable.gd" id="2_e3m3f"]
+[ext_resource type="FontFile" uid="uid://clq1j6dwhc0mm" path="res://Assets/JQKAsWild.ttf" id="3_bqqt8"]
+
+[sub_resource type="Theme" id="Theme_ws5ob"]
+default_font = ExtResource("3_bqqt8")
+default_font_size = 16
 
 [node name="MainGame" type="Node2D" unique_id=2099473463]
 script = ExtResource("1_ws5ob")
 
-[node name="RouletteWheel" type="Node2D" parent="." unique_id=1206488410]
-position = Vector2(980, 540)
-script = ExtResource("1_3tbxw")
-
 [node name="UI" type="CanvasLayer" parent="." unique_id=240550285]
 
-[node name="BettingTable" type="VBoxContainer" parent="UI" unique_id=928714554]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Root" type="Control" parent="UI" unique_id=1621934120]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_ws5ob")
+
+[node name="Margin" type="MarginContainer" parent="UI/Root" unique_id=106304130]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Columns" type="HBoxContainer" parent="UI/Root/Margin" unique_id=354577841]
+layout_mode = 2
+
+[node name="LeftColumn" type="VBoxContainer" parent="UI/Root/Margin/Columns" unique_id=191382280]
+layout_mode = 2
+
+[node name="BettingPanel" type="PanelContainer" parent="UI/Root/Margin/Columns/LeftColumn" unique_id=1104972950]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.2
+
+[node name="BettingTable" type="VBoxContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel" unique_id=965049302]
+unique_name_in_owner = true
+layout_mode = 2
 script = ExtResource("2_e3m3f")
 
-[node name="SpinButton" type="Button" parent="UI" unique_id=1027931315]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="ChipsLabel" type="Label" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/BettingTable" unique_id=1864947361]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
 
-[node name="ResultLabel" type="Label" parent="UI" unique_id=1946437374]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="NumbersGrid" type="GridContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/BettingTable" unique_id=667840764]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 6
+
+[node name="OutsideBets" type="HBoxContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/BettingTable" unique_id=86726211]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="ControlsPanel" type="PanelContainer" parent="UI/Root/Margin/Columns/LeftColumn" unique_id=43482170]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel" unique_id=78179017]
+layout_mode = 2
+
+[node name="ResultLabel" type="Label" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel/VBoxContainer" unique_id=1946437374]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Place a bet, then spin"
+horizontal_alignment = 1
+
+[node name="SpinButton" type="Button" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel/VBoxContainer" unique_id=1822264898]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Spin"
+
+[node name="ClearButton" type="Button" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel/VBoxContainer" unique_id=666726144]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Clear Bets"
+
+[node name="StakeRow" type="HBoxContainer" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel/VBoxContainer" unique_id=898535555]
+layout_mode = 2
+
+[node name="MinusButton" type="Button" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel/VBoxContainer/StakeRow" unique_id=171281659]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "- Stake"
+
+[node name="PlusButton" type="Button" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel/VBoxContainer/StakeRow" unique_id=1882193098]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "+ Stake"
+
+[node name="StakeLabel" type="Label" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel/VBoxContainer/StakeRow" unique_id=2007073314]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CenterColumn" type="VBoxContainer" parent="UI/Root/Margin/Columns" unique_id=1022382236]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.5
+
+[node name="InfoPanel" type="PanelContainer" parent="UI/Root/Margin/Columns/CenterColumn" unique_id=1874670489]
+layout_mode = 2
+
+[node name="Info" type="HBoxContainer" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel" unique_id=416174405]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Cash" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=76782869]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Chips: 0"
+
+[node name="Quota" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=2089763444]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Quota: 100"
+
+[node name="Round" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=190982477]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Round: -5"
+
+[node name="SpinsLeft" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=360990769]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Spins Left: 3"
+
+[node name="WheelArea" type="Panel" parent="UI/Root/Margin/Columns/CenterColumn" unique_id=2004620207]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RouletteWheel" type="Node2D" parent="UI/Root/Margin/Columns/CenterColumn/WheelArea" unique_id=1206488410]
+unique_name_in_owner = true
+position = Vector2(683, 536)
+script = ExtResource("1_3tbxw")
+
+[node name="RightPanel" type="PanelContainer" parent="UI/Root/Margin/Columns" unique_id=2057877178]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Root/Margin/Columns/RightPanel" unique_id=638188414]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Root/Margin/Columns/RightPanel/ScrollContainer" unique_id=495578541]
+layout_mode = 2

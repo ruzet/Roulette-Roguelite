@@ -4,10 +4,10 @@ extends Node2D
 signal BallLanded(BallIndex: int, Pocket: PocketData, Context: Dictionary)
 signal SpinFinished(Results: Array[PocketData])
 
-@export var Radius = 220.0
+@export var Radius = 450.0
 @export var BallCount = 1
-@export var SpinTime = 4
-@export var BallCooldown = 0.5
+@export var SpinTime = 3
+@export var BallCooldown = 0.1
 
 var Source: PocketSet = PocketSet.new(): 
     set(Value):
@@ -77,14 +77,12 @@ func _Land(BallIndex: int, PocketIndex: int, Results: Array[PocketData]):
     var Pocket = Pockets[PocketIndex]
     var Context = {"Pocket": Pocket, "History": History, "Bonus": 0.0, "Wheel": self, "BallIndex": BallIndex}
 
-    for Effect in Pocket.Effects:
-        Effect.OnLand(Context)
+    for Effect in Pocket.Effects: Effect.OnLand(Context)
     History.append(Pocket)
     Results.append(Pocket)
     BallLanded.emit(BallIndex, Pocket, Context)
 
 func _draw() -> void:
-    draw_circle(Vector2.ZERO, 50, Color.WHITE)
     if Pockets.is_empty(): return
 
     var TextFont = ThemeDB.fallback_font
@@ -95,17 +93,14 @@ func _draw() -> void:
         var Mid = A0 + Slice * 0.5
         var PTS = PackedVector2Array([Vector2.ZERO])
 
-        for S in 9:
-            PTS.append(Vector2.from_angle(A0 + Slice * S / 8.0) * Radius)
+        for S in 9: PTS.append(Vector2.from_angle(A0 + Slice * S / 8.0) * Radius)
         draw_colored_polygon(PTS, ColorTable.get(Pockets[i].ColorID, Color.GRAY))
         draw_line(Vector2.ZERO, Vector2.from_angle(A0) * Radius, Color.from_rgba8(255, 255, 255, 90), 2.0)
         draw_set_transform(Vector2.from_angle(Mid) * Radius * 0.85, Mid + PI / 2.0)
-        draw_string(TextFont, Vector2(-15, 5), str(Pockets[i].Number), HORIZONTAL_ALIGNMENT_CENTER, 30, 14)
+        draw_string(TextFont, Vector2(-15, 5), str(Pockets[i].Number), HORIZONTAL_ALIGNMENT_CENTER, 30, 20)
         draw_set_transform(Vector2.ZERO, 0.0)
     draw_circle(Vector2.ZERO, Radius * 0.45, Color("111111"))
     for B in _Balls:
-        draw_circle(Vector2.from_angle(B.Angle) * B.Radius, 7.0, Color.WHITE)
+        draw_circle(Vector2.from_angle(B.Angle) * B.Radius, Radius * 0.035, Color.WHITE)
 
-func _ready() -> void:
-    RNG.randomize()
-    if not Source.Changed.is_connected(queue_redraw): Source.Changed.connect(queue_redraw)
+func _ready() -> void: if not Source.Changed.is_connected(queue_redraw): Source.Changed.connect(queue_redraw)
