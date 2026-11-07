@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dle1vdxlwtgec"]
+
+[ext_resource type="Script" uid="uid://c88mxdi5ds7ve" path="res://MainMenu.gd" id="1_i26rj"]
+
+[node name="MainMenu" type="Control" unique_id=676830254]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i26rj")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=180579642]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelContainer" type="VBoxContainer" parent="CenterContainer" unique_id=234872429]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/LabelContainer" unique_id=1492790887]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Roulette Roguelite"
+horizontal_alignment = 1
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1762511491]
+custom_minimum_size = Vector2(1920, 0)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="CenterContainer/ButtonsContainer" unique_id=213239194]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Play"
+
+[node name="SeedButton" type="Button" parent="CenterContainer/ButtonsContainer" unique_id=1993247684]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Set Seed"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/ButtonsContainer" unique_id=1310660913]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Quit"

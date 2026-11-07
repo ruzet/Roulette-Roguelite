@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b7gsy122tyvam"]
+
+[ext_resource type="Script" uid="uid://ce5ci53vnlkwn" path="res://RouletteWheel.gd" id="1_3tbxw"]
+
+[node name="MainGame" type="Node2D" unique_id=2099473463]
+
+[node name="RouletteWheel" type="Node2D" parent="." unique_id=1206488410]
+script = ExtResource("1_3tbxw")
