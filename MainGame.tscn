@@ -1,8 +1,27 @@
 [gd_scene format=3 uid="uid://b7gsy122tyvam"]
 
 [ext_resource type="Script" uid="uid://ce5ci53vnlkwn" path="res://RouletteWheel.gd" id="1_3tbxw"]
+[ext_resource type="Script" uid="uid://dpn55ghxflkd2" path="res://MainGame.gd" id="1_ws5ob"]
+[ext_resource type="Script" uid="uid://b5jixhgunqxc" path="res://BettingTable.gd" id="2_e3m3f"]
 
 [node name="MainGame" type="Node2D" unique_id=2099473463]
+script = ExtResource("1_ws5ob")
 
 [node name="RouletteWheel" type="Node2D" parent="." unique_id=1206488410]
+position = Vector2(980, 540)
 script = ExtResource("1_3tbxw")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=240550285]
+
+[node name="BettingTable" type="VBoxContainer" parent="UI" unique_id=928714554]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_e3m3f")
+
+[node name="SpinButton" type="Button" parent="UI" unique_id=1027931315]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="ResultLabel" type="Label" parent="UI" unique_id=1946437374]
+offset_right = 40.0
+offset_bottom = 23.0

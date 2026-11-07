@@ -9,39 +9,35 @@ signal SpinFinished(Results: Array[PocketData])
 @export var SpinTime = 4
 @export var BallCooldown = 0.5
 
+var Source: PocketSet = PocketSet.new(): 
+    set(Value):
+        if Source != null && Source.Changed.is_connected(queue_redraw): Source.Changed.disconnect(queue_redraw)
+        Source = Value
+        Source.Changed.connect(queue_redraw)
+        queue_redraw()
+
+var Pockets: Array[PocketData]:
+    get: return Source.Pockets
+
+var History: Array[PocketData]:
+    get: return Source.History
+
+var ColorTable: Dictionary:
+    get: return Source.ColorTable
+
 var _Balls: Array = []
-var Pockets: Array[PocketData] = []
-var History: Array[PocketData] = []
 var Luck = LuckSystem.new()
 var RNG = GameState.RNG
 var Spinning = false
 
-var ColorTable = {
-    &"Red": Color.from_rgba8(255, 0, 0),
-    &"Black": Color.from_rgba8(0, 0, 0),
-    &"Green": Color.from_rgba8(0, 255, 0)
-}
+func AddNumber(Number: int, ColorID: StringName, Weight = 1.0):
+    return Source.AddNumber(Number, ColorID, Weight)
 
-func _ready() -> void:
-    RNG.randomize()
-
-func AddNumber(Number: int, ColorID: StringName, Weight: float = 1.0):
-    var Data = PocketData.new()
-    Data.Number = Number
-    Data.ColorID = ColorID
-    Data.BaseWeight = Weight
-    return Data
-
-func AddPocket(Data: PocketData, Index = -1):
-    if Index < 0:
-        Pockets.append(Data)
-    else:
-        Pockets.insert(Index, Data)
-    queue_redraw()
+func AddPocket(Pocket: PocketData, Index = -1):
+    Source.AddPocket(Pocket, Index)
 
 func RemovePocket(Index: int):
-    Pockets.remove_at(Index)
-    queue_redraw()
+    Source.RemovePocket(Index)
 
 func Spin():
     if Spinning || Pockets.is_empty(): return
@@ -55,8 +51,8 @@ func Spin():
     var Outer = Radius * 0.95
     var NewTween = create_tween().set_parallel(true)
 
-    NewTween.tween_property(self, "rotation", rotation + TAU * 3, TotalTime)
-    NewTween.set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+    NewTween.tween_property(self, "rotation", rotation + TAU * 3, TotalTime) \
+	.set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 
     for i in BallCount:
         var Target = Luck.Pick(Pockets, RNG)
@@ -66,11 +62,11 @@ func Spin():
         var Delay = i * BallCooldown
 
         _Balls.append(Ball)
-        NewTween.tween_method(func(CurrentTime: float):
-            Ball.Angle = lerpf(StartAngle, FinalAngle, CurrentTime)
-            Ball.Radius = lerpf(Outer, Inner, pow(CurrentTime, 3.0))
-            queue_redraw(), 0.0, 1.0, SpinTime)
-        NewTween.set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT).set_delay(Delay)
+        NewTween.tween_method(func(T: float):
+            Ball.Angle = lerpf(StartAngle, FinalAngle, T)
+            Ball.Radius = lerpf(Outer, Inner, pow(T, 3.0))
+            queue_redraw(), 0.0, 1.0, SpinTime) \
+		    .set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT).set_delay(Delay)
         NewTween.tween_callback(_Land.bind(i, Target, Results)).set_delay(Delay + SpinTime)
 
     await NewTween.finished
@@ -87,7 +83,8 @@ func _Land(BallIndex: int, PocketIndex: int, Results: Array[PocketData]):
     Results.append(Pocket)
     BallLanded.emit(BallIndex, Pocket, Context)
 
-func _draw():
+func _draw() -> void:
+    draw_circle(Vector2.ZERO, 50, Color.WHITE)
     if Pockets.is_empty(): return
 
     var TextFont = ThemeDB.fallback_font
@@ -108,3 +105,7 @@ func _draw():
     draw_circle(Vector2.ZERO, Radius * 0.45, Color("111111"))
     for B in _Balls:
         draw_circle(Vector2.from_angle(B.Angle) * B.Radius, 7.0, Color.WHITE)
+
+func _ready() -> void:
+    RNG.randomize()
+    if not Source.Changed.is_connected(queue_redraw): Source.Changed.connect(queue_redraw)
