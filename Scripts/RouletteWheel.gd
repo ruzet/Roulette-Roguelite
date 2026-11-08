@@ -6,7 +6,7 @@ signal SpinFinished(Results: Array[PocketData])
 
 @export var Radius = 450.0
 @export var BallCount = 1
-@export var SpinTime = 0.1#3
+@export var SpinTime = 3
 @export var BallCooldown = 0.1
 
 var Source: PocketSet = PocketSet.new(): 
