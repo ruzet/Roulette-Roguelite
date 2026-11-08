@@ -9,4 +9,5 @@ Title = "Green"
 Description = "A Normal Pocket"
 ColorID = &"Black"
 DisplayColor = Color(0, 0.7058824, 0, 1)
+BaseWeight = 2.0
 metadata/_custom_type_script = "uid://c8psdmxjdupve"

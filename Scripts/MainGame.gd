@@ -7,7 +7,7 @@ extends Node2D
 @onready var ResultLabel: Label = %ResultLabel
 @onready var WheelArea: Control = %WheelArea
 @onready var ShopScreen: Shop = %Shop
-
+signal SpinResolved(Result: Dictionary)
 const Stakes = [1, 5, 10, 25, 50, 100]
 
 var Source := PocketSet.new()
@@ -93,6 +93,7 @@ func _OnSpinPressed() -> void:
 
 func _OnSpinFinished(Results: Array[PocketData]) -> void:
 	var R := Book.ResolveBets(Results)
+	SpinResolved.emit(R)
 	Table.Locked = false
 	var Numbers := ", ".join(Results.map(func(P): return str(P.Number)))
 	ResultLabel.text = ResultFormat % [Numbers, R.Net]

@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://0varrlefku33" path="res://Charms/BlackTie.tres" id="15_yc6xl"]
 [ext_resource type="Resource" uid="uid://b5hjp7ms23qee" path="res://Charms/Outreach.tres" id="16_k6vqf"]
 [ext_resource type="Resource" uid="uid://dnlw6ywxjat4v" path="res://Charms/SpareBall.tres" id="18_ev6kq"]
+[ext_resource type="Resource" uid="uid://7hosen3n3pas" path="res://Charms/Cashback.tres" id="22_glaac"]
 
 [sub_resource type="Theme" id="Theme_ws5ob"]
 default_font = ExtResource("2_d4f28")
@@ -239,8 +240,8 @@ OfferCount = 2
 CardScene = ExtResource("7_iuea6")
 CharmCardScene = ExtResource("14_ylpyt")
 DisplayCharmCardScene = ExtResource("13_wyocf")
-CharmPool = Array[ExtResource("12_yr2pg")]([ExtResource("15_yc6xl"), ExtResource("16_k6vqf"), ExtResource("13_ylpyt"), ExtResource("18_ev6kq")])
-CharmOfferCount = 2
+CharmPool = Array[ExtResource("12_yr2pg")]([ExtResource("15_yc6xl"), ExtResource("16_k6vqf"), ExtResource("13_ylpyt"), ExtResource("18_ev6kq"), ExtResource("22_glaac")])
+CharmOfferCount = 5
 
 [node name="Background" type="ColorRect" parent="UI/Shop" unique_id=1604025868]
 layout_mode = 1

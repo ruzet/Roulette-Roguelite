@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Cashback" format=3 uid="uid://7hosen3n3pas"]
+
+[ext_resource type="Script" uid="uid://qhsaqfeev7l5" path="res://Scripts/Charms/Cashback.gd" id="1_7mxqi"]
+
+[resource]
+script = ExtResource("1_7mxqi")
+Title = "Cashback"
+Description = "You get 15% of your chips back every bet"
+metadata/_custom_type_script = "uid://bce82ojvm26j5"
