@@ -1,8 +1,6 @@
 extends Node2D
 
 @export var ResultFormat := "Landed: %s Net: %+d"
-@export var OutOfChipsText := "   (out of chips)"
-
 @onready var Wheel: RouletteWheel = %RouletteWheel
 @onready var Table: BettingTable = %BettingTable
 @onready var SpinButton: Button = %SpinButton
@@ -15,12 +13,16 @@ var Source := PocketSet.new()
 var Book := BetBook.new()
 var StakeIndex = 1
 
+var Round = -3
+var SpinsLeft = 3
+var Quota = 0
+
 func _ready() -> void:
 	Wheel.Source = Source
 	Wheel.BallCount = 1
 
 	Source.AddNumber(0, &"Green")
-	for N in range(1, 100): Source.AddNumber(N, &"Red" if N % 2 == 1 else &"Black")
+	for N in range(1, 37): Source.AddNumber(N, &"Red" if N % 2 == 1 else &"Black")
 	Table.Bind(Source, Book)
 
 	SpinButton.pressed.connect(_OnSpinPressed)
@@ -33,7 +35,16 @@ func _ready() -> void:
 	_UpdateButton()
 
 func _UpdateButton() -> void:
+	%CurrentChips.text = "Chips: " + str(Book.Balance)
 	SpinButton.disabled = Wheel.Spinning or Book.Bets.is_empty()
+
+func _WinRound():
+	Round += 1
+	SpinsLeft = 3
+	get_tree().change_scene_to_file("res://Scenes/Shop.tscn")
+
+func _LoseRound():
+	pass
 
 func _PlaceWheel():
 	var AreaSize = WheelArea.size
@@ -47,12 +58,13 @@ func _ChangeStake(Step: int):
 	%StakeLabel.text = str(Table.ChipValue)
 	Book.Changed.emit()
 	
-
 func _OnSpinPressed() -> void:
-	if Wheel.Spinning or Book.Bets.is_empty(): return
+	if Wheel.Spinning or Book.Bets.is_empty() or SpinsLeft <= 0: return
 	Table.Locked = true
 	ResultLabel.text = "Spinning..."
 	Wheel.Spin()
+	SpinsLeft -= 1
+	%CurrentSpinsLeft.text = "Spins Left: " + str(SpinsLeft)
 	_UpdateButton()
 
 func _OnSpinFinished(Results: Array[PocketData]) -> void:
@@ -61,5 +73,5 @@ func _OnSpinFinished(Results: Array[PocketData]) -> void:
 	var Numbers := ", ".join(Results.map(func(P): return str(P.Number)))
 	ResultLabel.text = ResultFormat % [Numbers, R.Net]
 	if Book.Balance <= 0:
-		ResultLabel.text += OutOfChipsText
+		pass
 	_UpdateButton()

@@ -9,4 +9,4 @@ func Play():
 	GameState.StartRun("")
 
 func Seed():
-	get_tree().change_scene_to_file("res://SeedMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/SeedMenu.tscn")

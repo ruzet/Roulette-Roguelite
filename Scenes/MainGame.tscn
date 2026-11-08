@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://b7gsy122tyvam"]
 
-[ext_resource type="Script" uid="uid://ce5ci53vnlkwn" path="res://RouletteWheel.gd" id="1_3tbxw"]
-[ext_resource type="Script" uid="uid://dpn55ghxflkd2" path="res://MainGame.gd" id="1_ws5ob"]
-[ext_resource type="Script" uid="uid://b5jixhgunqxc" path="res://BettingTable.gd" id="2_e3m3f"]
-[ext_resource type="FontFile" uid="uid://clq1j6dwhc0mm" path="res://Assets/JQKAsWild.ttf" id="3_bqqt8"]
+[ext_resource type="Script" uid="uid://dpn55ghxflkd2" path="res://Scripts/MainGame.gd" id="1_321ql"]
+[ext_resource type="FontFile" uid="uid://clq1j6dwhc0mm" path="res://Assets/JQKAsWild.ttf" id="2_d4f28"]
+[ext_resource type="Script" uid="uid://b5jixhgunqxc" path="res://Scripts/BettingTable.gd" id="3_d4f28"]
+[ext_resource type="PackedScene" uid="uid://dqo422krm08bt" path="res://Scenes/BetButton.tscn" id="4_kvfik"]
+[ext_resource type="Script" uid="uid://ce5ci53vnlkwn" path="res://Scripts/RouletteWheel.gd" id="5_iuea6"]
 
 [sub_resource type="Theme" id="Theme_ws5ob"]
-default_font = ExtResource("3_bqqt8")
+default_font = ExtResource("2_d4f28")
 default_font_size = 16
 
 [node name="MainGame" type="Node2D" unique_id=2099473463]
-script = ExtResource("1_ws5ob")
+script = ExtResource("1_321ql")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=240550285]
 
@@ -46,24 +47,30 @@ size_flags_stretch_ratio = 1.2
 [node name="BettingTable" type="VBoxContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel" unique_id=965049302]
 unique_name_in_owner = true
 layout_mode = 2
-script = ExtResource("2_e3m3f")
+script = ExtResource("3_d4f28")
+BetButtonScene = ExtResource("4_kvfik")
 
 [node name="ChipsLabel" type="Label" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/BettingTable" unique_id=1864947361]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
-
-[node name="NumbersGrid" type="GridContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/BettingTable" unique_id=667840764]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-columns = 6
 
 [node name="OutsideBets" type="HBoxContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/BettingTable" unique_id=86726211]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
+
+[node name="ButtonScrollContainer" type="ScrollContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/BettingTable" unique_id=707439910]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NumbersGrid" type="GridContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/BettingTable/ButtonScrollContainer" unique_id=667840764]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 6
 
 [node name="ControlsPanel" type="PanelContainer" parent="UI/Root/Margin/Columns/LeftColumn" unique_id=43482170]
 layout_mode = 2
@@ -126,24 +133,28 @@ layout_mode = 2
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="Cash" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=76782869]
+[node name="CurrentChips" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=76782869]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Chips: 0"
 
-[node name="Quota" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=2089763444]
+[node name="CurrentQuota" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=2089763444]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Quota: 100"
 
-[node name="Round" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=190982477]
+[node name="CurrentRound" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=190982477]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Round: -5"
 
-[node name="SpinsLeft" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=360990769]
+[node name="CurrentSpinsLeft" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=360990769]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Spins Left: 3"
 
 [node name="WheelArea" type="Panel" parent="UI/Root/Margin/Columns/CenterColumn" unique_id=2004620207]
@@ -155,7 +166,7 @@ size_flags_vertical = 3
 [node name="RouletteWheel" type="Node2D" parent="UI/Root/Margin/Columns/CenterColumn/WheelArea" unique_id=1206488410]
 unique_name_in_owner = true
 position = Vector2(683, 536)
-script = ExtResource("1_3tbxw")
+script = ExtResource("5_iuea6")
 
 [node name="RightPanel" type="PanelContainer" parent="UI/Root/Margin/Columns" unique_id=2057877178]
 layout_mode = 2
@@ -166,3 +177,10 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Root/Margin/Columns/RightPanel/ScrollContainer" unique_id=495578541]
 layout_mode = 2
+
+[node name="CharmsLabel" type="Label" parent="UI/Root/Margin/Columns/RightPanel" unique_id=140192662]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Charms (0/7)"
+horizontal_alignment = 1

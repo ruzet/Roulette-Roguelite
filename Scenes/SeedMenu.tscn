@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c57ecdt4uel52"]
 
-[ext_resource type="Script" uid="uid://bu7up65ns6vw7" path="res://SeedMenu.gd" id="1_mglw1"]
+[ext_resource type="Script" uid="uid://bu7up65ns6vw7" path="res://Scripts/SeedMenu.gd" id="1_l5mtn"]
 
 [node name="SeedMenu" type="Control" unique_id=981687422]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_mglw1")
+script = ExtResource("1_l5mtn")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1420414571]
 layout_mode = 1

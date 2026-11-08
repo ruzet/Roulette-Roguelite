@@ -30,14 +30,9 @@ var Luck = LuckSystem.new()
 var RNG = GameState.RNG
 var Spinning = false
 
-func AddNumber(Number: int, ColorID: StringName, Weight = 1.0):
-    return Source.AddNumber(Number, ColorID, Weight)
-
-func AddPocket(Pocket: PocketData, Index = -1):
-    Source.AddPocket(Pocket, Index)
-
-func RemovePocket(Index: int):
-    Source.RemovePocket(Index)
+func AddNumber(Number: int, ColorID: StringName, Weight = 1.0): return Source.AddNumber(Number, ColorID, Weight)
+func AddPocket(Pocket: PocketData, Index = -1): Source.AddPocket(Pocket, Index)
+func RemovePocket(Index: int): Source.RemovePocket(Index)
 
 func Spin():
     if Spinning || Pockets.is_empty(): return
@@ -99,8 +94,7 @@ func _draw() -> void:
         draw_set_transform(Vector2.from_angle(Mid) * Radius * 0.85, Mid + PI / 2.0)
         draw_string(TextFont, Vector2(-15, 5), str(Pockets[i].Number), HORIZONTAL_ALIGNMENT_CENTER, 30, 20)
         draw_set_transform(Vector2.ZERO, 0.0)
-    draw_circle(Vector2.ZERO, Radius * 0.45, Color("111111"))
-    for B in _Balls:
-        draw_circle(Vector2.from_angle(B.Angle) * B.Radius, Radius * 0.035, Color.WHITE)
+        draw_circle(Vector2.ZERO, Radius * 0.45, Color("111111"))
+    for B in _Balls: draw_circle(Vector2.from_angle(B.Angle) * B.Radius, Radius * 0.035, Color.WHITE)
 
 func _ready() -> void: if not Source.Changed.is_connected(queue_redraw): Source.Changed.connect(queue_redraw)

@@ -5,9 +5,9 @@ signal Changed
 var Pockets: Array[PocketData] = []
 var History: Array[PocketData] = []
 var ColorTable = {
-    &"Red": Color.from_rgba8(255, 0, 0),
+    &"Red": Color.from_rgba8(180, 0, 0),
     &"Black": Color.from_rgba8(0, 0, 0),
-    &"Green": Color.from_rgba8(0, 255, 0)
+    &"Green": Color.from_rgba8(0, 180, 0)
 }
 
 func AddNumber(Number: int, ColorID: StringName, Weight: float = 1.0):

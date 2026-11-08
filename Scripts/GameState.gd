@@ -10,4 +10,4 @@ func StartRun(Seed: String):
 		RunSeed = Seed.hash()
 
 	RNG.seed = RunSeed
-	get_tree().change_scene_to_file("res://MainGame.tscn")
+	get_tree().change_scene_to_file("res://Scenes/MainGame.tscn")
