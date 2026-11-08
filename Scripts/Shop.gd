@@ -8,9 +8,10 @@ signal Closed
 @export var PocketPool: Array[PocketTemplate] = []
 @export var OfferCount = 3
 @export var CardScene: PackedScene
-@export var CharmPool: Array[CharmData] = []
-@export var CharmOfferCount = 3
 @export var CharmCardScene: PackedScene
+@export var DisplayCharmCardScene: PackedScene
+@export var CharmPool: Array[CharmData] = []
+@export var CharmOfferCount = 1
 @export var CharmTitle = "Buy Charms"
 @export var PocketTitle = "Choose a Pocket"
 @export var ChipsFormat = "Chips: %d"
@@ -55,6 +56,9 @@ func _ShowCharms():
 		Offers.add_child(Card)
 		Card.Setup(Charm)
 		Card.Chosen.connect(_OnCharmChosen)
+	if ShopChips: ShopChips.show()
+	_RefreshCharmCards()
+	DoneButton.show()
 
 func _RefreshCharmCards():
 	for Child in Offers.get_children():
@@ -64,7 +68,7 @@ func _RefreshCharmCards():
 
 func _Roll(Items: Array, Count: int):
 	var Pool = Items.duplicate()
-	var Picked: Array[PocketTemplate] = []
+	var Picked: Array = []
 	while Picked.size() < Count && !Pool.is_empty():
 		var Total = 0.0
 		for T in Pool:
@@ -92,5 +96,8 @@ func _OnCharmChosen(Charm: CharmData, Card: CharmCard):
 	_Book.Balance -= Charm.Cost
 	_Book.Changed.emit()
 	Card.MarkSold()
-	CharmBought.emit()
+	CharmBought.emit(Charm)
+	var DisplayCard = DisplayCharmCardScene.instantiate() as DisplayCharmCard
+	%CharmScrollContainer/VBoxContainer.add_child(DisplayCard)
+	DisplayCard.Setup(Charm)
 	_RefreshCharmCards()

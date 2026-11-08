@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="CharmData" format=3 uid="uid://cm2l2u8ltwq37"]
-
-[ext_resource type="Script" uid="uid://bce82ojvm26j5" path="res://Scripts/CharmData.gd" id="1_mctxv"]
-
-[resource]
-script = ExtResource("1_mctxv")
-metadata/_custom_type_script = "uid://bce82ojvm26j5"

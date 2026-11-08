@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RedTie" format=3 uid="uid://cm2l2u8ltwq37"]
+
+[ext_resource type="Script" uid="uid://dxseey0vpxyqw" path="res://Scripts/Charms/RedTie.gd" id="1_5jbp4"]
+
+[resource]
+script = ExtResource("1_5jbp4")
+Title = "Red Tie"
+Description = "+ 0.2x Payout on Red Pockets"
+metadata/_custom_type_script = "uid://bce82ojvm26j5"

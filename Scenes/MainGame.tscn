@@ -11,6 +11,10 @@
 [ext_resource type="Resource" uid="uid://cjulmtw8cqawh" path="res://Pockets/BluePocket.tres" id="8_q8sds"]
 [ext_resource type="Resource" uid="uid://drh4ie7d2a1n0" path="res://Pockets/OrangePocket.tres" id="9_yr2pg"]
 [ext_resource type="Resource" uid="uid://4f7ts6xypijd" path="res://Pockets/PurplePocket.tres" id="10_ylpyt"]
+[ext_resource type="Script" uid="uid://bce82ojvm26j5" path="res://Scripts/CharmData.gd" id="12_yr2pg"]
+[ext_resource type="PackedScene" uid="uid://cajp1rs6gyofo" path="res://Scenes/DisplayCharmCard.tscn" id="13_wyocf"]
+[ext_resource type="Resource" uid="uid://cm2l2u8ltwq37" path="res://Charms/RedTie.tres" id="13_ylpyt"]
+[ext_resource type="PackedScene" uid="uid://by0iq3msqpg2a" path="res://Scenes/CharmCard.tscn" id="14_ylpyt"]
 
 [sub_resource type="Theme" id="Theme_ws5ob"]
 default_font = ExtResource("2_d4f28")
@@ -48,40 +52,46 @@ layout_mode = 2
 [node name="BettingPanel" type="PanelContainer" parent="UI/Root/Margin/Columns/LeftColumn" unique_id=1104972950]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 1.2
+size_flags_stretch_ratio = 3.0
 
-[node name="BettingTable" type="VBoxContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel" unique_id=965049302]
+[node name="Scroll" type="ScrollContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel" unique_id=1257544357]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="BettingTable" type="VBoxContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/Scroll" unique_id=965049302]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("3_d4f28")
 BetButtonScene = ExtResource("4_kvfik")
 
-[node name="ChipsLabel" type="Label" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/BettingTable" unique_id=1864947361]
+[node name="ChipsLabel" type="Label" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/Scroll/BettingTable" unique_id=1864947361]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 
-[node name="OutsideBets" type="HBoxContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/BettingTable" unique_id=86726211]
+[node name="OutsideBets" type="HFlowContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/Scroll/BettingTable" unique_id=1249547250]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
 alignment = 1
 
-[node name="ButtonScrollContainer" type="ScrollContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/BettingTable" unique_id=707439910]
+[node name="ButtonScrollContainer" type="ScrollContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/Scroll/BettingTable" unique_id=707439910]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="NumbersGrid" type="GridContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/BettingTable/ButtonScrollContainer" unique_id=667840764]
+[node name="NumbersGrid" type="GridContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/Scroll/BettingTable/ButtonScrollContainer" unique_id=667840764]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 columns = 6
 
 [node name="ControlsPanel" type="PanelContainer" parent="UI/Root/Margin/Columns/LeftColumn" unique_id=43482170]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel" unique_id=78179017]
 layout_mode = 2
@@ -174,22 +184,39 @@ unique_name_in_owner = true
 position = Vector2(683, 536)
 script = ExtResource("5_iuea6")
 
-[node name="RightPanel" type="PanelContainer" parent="UI/Root/Margin/Columns" unique_id=2057877178]
+[node name="RightPanel" type="VBoxContainer" parent="UI/Root/Margin/Columns" unique_id=352151761]
+custom_minimum_size = Vector2(420, 0)
+custom_maximum_size = Vector2(420, -1)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/Root/Margin/Columns/RightPanel" unique_id=638188414]
+[node name="LabelPanel" type="PanelContainer" parent="UI/Root/Margin/Columns/RightPanel" unique_id=30721499]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Root/Margin/Columns/RightPanel/ScrollContainer" unique_id=495578541]
-layout_mode = 2
-
-[node name="CharmsLabel" type="Label" parent="UI/Root/Margin/Columns/RightPanel" unique_id=140192662]
+[node name="CharmsLabel" type="Label" parent="UI/Root/Margin/Columns/RightPanel/LabelPanel" unique_id=140192662]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Charms (0/7)"
 horizontal_alignment = 1
+
+[node name="CharmsContainer" type="Panel" parent="UI/Root/Margin/Columns/RightPanel" unique_id=51041000]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CharmScrollContainer" type="ScrollContainer" parent="UI/Root/Margin/Columns/RightPanel/CharmsContainer" unique_id=638188414]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 4.0
+offset_right = 469.0
+offset_bottom = 1033.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Root/Margin/Columns/RightPanel/CharmsContainer/CharmScrollContainer" unique_id=495578541]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Shop" type="Control" parent="UI" unique_id=2075300965]
 unique_name_in_owner = true
@@ -203,6 +230,9 @@ grow_vertical = 2
 script = ExtResource("6_d4f28")
 PocketPool = Array[ExtResource("7_73a8k")]([ExtResource("8_q8sds"), ExtResource("9_yr2pg"), ExtResource("10_ylpyt")])
 CardScene = ExtResource("7_iuea6")
+CharmCardScene = ExtResource("14_ylpyt")
+DisplayCharmCardScene = ExtResource("13_wyocf")
+CharmPool = Array[ExtResource("12_yr2pg")]([ExtResource("13_ylpyt")])
 
 [node name="Background" type="ColorRect" parent="UI/Shop" unique_id=1604025868]
 layout_mode = 1

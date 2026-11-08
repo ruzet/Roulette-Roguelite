@@ -15,15 +15,15 @@ var Sold = false
 func _ready() -> void: pressed.connect(_OnPressed)
 
 func Setup(NewCharm: CharmData):
-    Charm = NewCharm
-    TitleLabel.text = Charm.Title
-    DescriptionLabel.text = Charm.Description
-    CostLabel.text = CostFormat % Charm.Cost
+	Charm = NewCharm
+	TitleLabel.text = Charm.Title
+	DescriptionLabel.text = Charm.Description
+	CostLabel.text = CostFormat % Charm.Cost
 
 func Refresh(Chips: int): disabled = Sold or Chips < Charm.Cost
 func MarkSold():
-    Sold = true
-    disabled = true
-    CostLabel.text = SoldText
+	Sold = true
+	disabled = true
+	CostLabel.text = SoldText
 
 func _OnPressed(): Chosen.emit(Charm, self)

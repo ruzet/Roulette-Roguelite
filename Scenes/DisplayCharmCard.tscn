@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cajp1rs6gyofo"]
+
+[ext_resource type="Script" uid="uid://ygdqdkrwc3" path="res://Scripts/DisplayCharmCard.gd" id="1_o7ryy"]
+
+[node name="DisplayCharmCard" type="Panel" unique_id=697990526]
+custom_minimum_size = Vector2(300, 400)
+offset_right = 300.0
+offset_bottom = 400.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_o7ryy")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1400462581]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin" unique_id=2140722203]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="Margin/VBoxContainer" unique_id=1890680634]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Title"
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="Margin/VBoxContainer" unique_id=481710034]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Description"
+horizontal_alignment = 1
+autowrap_mode = 2

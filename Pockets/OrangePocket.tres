@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_dqagl")
 Title = "Orange"
-Description = "Higher Chance for a ball to land on this colro"
+Description = "Higher Chance for a ball to land on this color"
 ColorID = &"Orange"
 DisplayColor = Color(0.9608813, 0.50486654, 0.32095376, 1)
 BaseWeight = 2.5
