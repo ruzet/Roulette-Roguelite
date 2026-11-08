@@ -23,7 +23,15 @@ func AddPocket(Data: PocketData, Index = -1):
         Pockets.append(Data)
     else:
         Pockets.insert(Index, Data)
-        Changed.emit()
+    Changed.emit()
+
+func AddTemplate(Template: PocketTemplate):
+    var Next = 0
+    for Pocket in Pockets: Next = maxi(Next, Pocket.Number + 1)
+    ColorTable[Template.ColorID] = Template.DisplayColor
+    var Data = Template.Build(Next)
+    AddPocket(Data)
+    return Data
 
 func RemovePocket(Index: int):
     Pockets.remove_at(Index)

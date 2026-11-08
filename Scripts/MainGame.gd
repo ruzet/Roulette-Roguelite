@@ -6,11 +6,13 @@ extends Node2D
 @onready var SpinButton: Button = %SpinButton
 @onready var ResultLabel: Label = %ResultLabel
 @onready var WheelArea: Control = %WheelArea
+@onready var ShopScreen: Shop = %Shop
 
 const Stakes = [1, 5, 10, 25, 50, 100]
 
 var Source := PocketSet.new()
 var Book := BetBook.new()
+var ShopRNG = RandomNumberGenerator.new()
 var StakeIndex = 1
 
 var Round = -3
@@ -20,6 +22,8 @@ var Quota = 0
 func _ready() -> void:
 	Wheel.Source = Source
 	Wheel.BallCount = 1
+	ShopRNG.seed = GameState.RNG.seed + 1
+	ShopScreen.PocketPicked.connect(Source.AddTemplate)
 
 	Source.AddNumber(0, &"Green")
 	for N in range(1, 37): Source.AddNumber(N, &"Red" if N % 2 == 1 else &"Black")
@@ -40,8 +44,11 @@ func _UpdateButton() -> void:
 
 func _WinRound():
 	Round += 1
+	if Round == 0: Round = 1
 	SpinsLeft = 3
-	get_tree().change_scene_to_file("res://Scenes/Shop.tscn")
+	%CurrentRound.text = "Round: " + str(Round)
+	%CurrentSpinsLeft.text = "Spins Left: " + str(SpinsLeft)
+	ShopScreen.Open(ShopRNG)
 
 func _LoseRound():
 	pass
@@ -73,5 +80,10 @@ func _OnSpinFinished(Results: Array[PocketData]) -> void:
 	var Numbers := ", ".join(Results.map(func(P): return str(P.Number)))
 	ResultLabel.text = ResultFormat % [Numbers, R.Net]
 	if Book.Balance <= 0:
-		pass
+		_LoseRound()
+	if SpinsLeft <= 0:
+		if Book.Balance <= Quota:
+			_LoseRound()
+		else:
+			_WinRound()
 	_UpdateButton()

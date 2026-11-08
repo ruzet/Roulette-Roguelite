@@ -5,6 +5,12 @@
 [ext_resource type="Script" uid="uid://b5jixhgunqxc" path="res://Scripts/BettingTable.gd" id="3_d4f28"]
 [ext_resource type="PackedScene" uid="uid://dqo422krm08bt" path="res://Scenes/BetButton.tscn" id="4_kvfik"]
 [ext_resource type="Script" uid="uid://ce5ci53vnlkwn" path="res://Scripts/RouletteWheel.gd" id="5_iuea6"]
+[ext_resource type="Script" uid="uid://c3k50p0vw0qre" path="res://Scripts/Shop.gd" id="6_d4f28"]
+[ext_resource type="Script" uid="uid://c8psdmxjdupve" path="res://Scripts/PocketTemplate.gd" id="7_73a8k"]
+[ext_resource type="PackedScene" uid="uid://b3ckfphaafp06" path="res://Scenes/PocketCard.tscn" id="7_iuea6"]
+[ext_resource type="Resource" uid="uid://cjulmtw8cqawh" path="res://Pockets/BluePocket.tres" id="8_q8sds"]
+[ext_resource type="Resource" uid="uid://drh4ie7d2a1n0" path="res://Pockets/OrangePocket.tres" id="9_yr2pg"]
+[ext_resource type="Resource" uid="uid://4f7ts6xypijd" path="res://Pockets/PurplePocket.tres" id="10_ylpyt"]
 
 [sub_resource type="Theme" id="Theme_ws5ob"]
 default_font = ExtResource("2_d4f28")
@@ -149,7 +155,7 @@ text = "Quota: 100"
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Round: -5"
+text = "Round: -3"
 
 [node name="CurrentSpinsLeft" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=360990769]
 unique_name_in_owner = true
@@ -184,3 +190,47 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 50
 text = "Charms (0/7)"
 horizontal_alignment = 1
+
+[node name="Shop" type="Control" parent="UI" unique_id=2075300965]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_d4f28")
+PocketPool = Array[ExtResource("7_73a8k")]([ExtResource("8_q8sds"), ExtResource("9_yr2pg"), ExtResource("10_ylpyt")])
+CardScene = ExtResource("7_iuea6")
+
+[node name="Background" type="ColorRect" parent="UI/Shop" unique_id=1604025868]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12573668, 0.27133554, 0.1802387, 1)
+
+[node name="Margin" type="MarginContainer" parent="UI/Shop" unique_id=1836936483]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Layout" type="VBoxContainer" parent="UI/Shop/Margin" unique_id=1431542057]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI/Shop/Margin/Layout" unique_id=508468927]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Choose a Pocket"
+horizontal_alignment = 1
+
+[node name="Offers" type="HBoxContainer" parent="UI/Shop/Margin/Layout" unique_id=1567998047]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
