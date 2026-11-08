@@ -6,10 +6,11 @@ extends Resource
 @export var ColorID: StringName = &"Blue"
 @export var DisplayColor = Color.from_rgba8(0, 0, 180)
 @export var BaseWeight = 1.0
+@export var ShopWeight = 1.0
+@export var PayoutMultiplier = 1.0
 @export var Effects: Array[PocketEffect] = []
 @export var Extra: Dictionary = {}
 @export var Icon: Texture2D
-@export var ShopWeight = 1.0
 
 func Build(Number: int):
 	var Pocket = PocketData.new()
@@ -18,4 +19,5 @@ func Build(Number: int):
 	Pocket.BaseWeight = BaseWeight
 	Pocket.Effects = Effects.duplicate()
 	Pocket.Extra = Extra.duplicate()
+	Pocket.Extra["PayoutMultiplier"] = PayoutMultiplier
 	return Pocket

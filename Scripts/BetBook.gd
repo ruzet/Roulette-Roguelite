@@ -5,6 +5,24 @@ signal Changed
 var Balance = 100
 var PayoutMultiplier = 1
 var Bets = []
+var NumberPayoutMods: Array = []
+var ColorPayoutMods: Array = []
+
+func AddNumberPayout(Origin: Variant, Number: int, Mult: float):
+	NumberPayoutMods.append({"Origin": Origin, "Key": Number, "Mult": Mult})
+
+func AddColorPayout(Origin: Variant, ColorID: StringName, Mult: float):
+	ColorPayoutMods.append({"Origin": Origin, "Key": ColorID, "Mult": Mult})
+
+func RemovePayoutSource(Origin: Variant):
+	NumberPayoutMods = NumberPayoutMods.filter(func(M): return M.Origin != Origin)
+	ColorPayoutMods = ColorPayoutMods.filter(func(M): return M.Origin != Origin)
+
+func PayoutMultiplierFor(Pocket: PocketData):
+	var Total: float = PayoutMultiplier
+	for M in NumberPayoutMods: if M.Key == Pocket.Number: Total *= M.Mult
+	for M in ColorPayoutMods: if M.Key == Pocket.ColorID: Total *= M.Mult
+	return Total * Pocket.Extra.get("PayoutMultiplier", 1.0)
 
 func PlaceBet(Type: BetType, Stake: int):
 	var Existing = false
@@ -34,14 +52,16 @@ func Clear():
 func ResolveBets(Results: Array[PocketData]) -> Dictionary:
 	var Staked = TotalStaked()
 	var Returned = 0.0
-	var Paid = 0
 
 	for Bet in Bets:
-		var Hits = 0
-		for Pocket in Results: if Bet.Type.Matches(Pocket): Hits += 1
-		if Hits > 0: Returned += Bet.Stake + Bet.Stake * Bet.Type.Payout * PayoutMultiplier * Hits
-	
-	Paid = roundi(Returned)
+		var Won = false
+		var Multiplier = 0.0
+		for Pocket in Results:
+			if Bet.Type.Matches(Pocket):
+				Won = true
+				Multiplier += PayoutMultiplierFor(Pocket)
+		if Won: Returned += Bet.Stake + Bet.Stake * Bet.Type.Payout * Multiplier
+	var Paid = roundi(Returned)
 	Bets.clear()
 	Balance += Paid
 	Changed.emit()

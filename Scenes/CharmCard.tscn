@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://by0iq3msqpg2a"]
+
+[ext_resource type="Script" uid="uid://be5uiybivlw12" path="res://Scripts/CharmCard.gd" id="1_5n5g7"]
+
+[node name="CharmCard" type="Button" unique_id=2083610773]
+custom_minimum_size = Vector2(300, 400)
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_5n5g7")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1400462581]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin" unique_id=2140722203]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="Margin/VBoxContainer" unique_id=1890680634]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Title"
+horizontal_alignment = 1
+
+[node name="CostLabel" type="Label" parent="Margin/VBoxContainer" unique_id=1917405032]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Cost"
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="Margin/VBoxContainer" unique_id=481710034]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 25
+text = "Description"
+horizontal_alignment = 1
+autowrap_mode = 2

@@ -5,5 +5,7 @@
 
 [resource]
 script = ExtResource("2_wxt4v")
+Description = "1.25x Payout"
 DisplayColor = Color(0.11151717, 0.5780991, 0.99999994, 1)
+PayoutMultiplier = 1.25
 metadata/_custom_type_script = "uid://c8psdmxjdupve"

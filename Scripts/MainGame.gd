@@ -14,9 +14,10 @@ var Source := PocketSet.new()
 var Book := BetBook.new()
 var ShopRNG = RandomNumberGenerator.new()
 var StakeIndex = 1
+var OwnedCharms: Array[CharmData] = []
 
 var Round = -3
-var SpinsLeft = 3
+var SpinsLeft = 1
 var Quota = 0
 
 func _ready() -> void:
@@ -24,6 +25,7 @@ func _ready() -> void:
 	Wheel.BallCount = 1
 	ShopRNG.seed = GameState.RNG.seed + 1
 	ShopScreen.PocketPicked.connect(Source.AddTemplate)
+	ShopScreen.CharmBought.connect(AddCharm)
 
 	Source.AddNumber(0, &"Green")
 	for N in range(1, 37): Source.AddNumber(N, &"Red" if N % 2 == 1 else &"Black")
@@ -38,6 +40,16 @@ func _ready() -> void:
 	_PlaceWheel.call_deferred()
 	_UpdateButton()
 
+func AddCharm(Charm: CharmData):
+	var Owned = Charm.duplicate() as CharmData
+	OwnedCharms.append(Owned)
+	Owned.OnAdded(self)
+
+func RemoveCharm(Charm: CharmData):
+	if OwnedCharms.has(Charm):
+		OwnedCharms.erase(Charm)
+		Charm.OnRemoved(self)
+
 func _UpdateButton() -> void:
 	%CurrentChips.text = "Chips: " + str(Book.Balance)
 	SpinButton.disabled = Wheel.Spinning or Book.Bets.is_empty()
@@ -48,10 +60,10 @@ func _WinRound():
 	SpinsLeft = 3
 	%CurrentRound.text = "Round: " + str(Round)
 	%CurrentSpinsLeft.text = "Spins Left: " + str(SpinsLeft)
-	ShopScreen.Open(ShopRNG)
+	ShopScreen.Open(ShopRNG, Book)
 
 func _LoseRound():
-	pass
+	get_tree().quit()
 
 func _PlaceWheel():
 	var AreaSize = WheelArea.size
