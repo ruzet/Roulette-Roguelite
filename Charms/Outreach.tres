@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Outreach" format=3 uid="uid://b5hjp7ms23qee"]
+
+[ext_resource type="Script" uid="uid://buxkrtks216ob" path="res://Scripts/Charms/Outreach.gd" id="1_8mjh6"]
+
+[resource]
+script = ExtResource("1_8mjh6")
+Title = "Outreach"
+Description = "+3 Pocket Options
++1 Charm Option"
+metadata/_custom_type_script = "uid://bce82ojvm26j5"

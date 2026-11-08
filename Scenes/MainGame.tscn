@@ -8,13 +8,19 @@
 [ext_resource type="Script" uid="uid://c3k50p0vw0qre" path="res://Scripts/Shop.gd" id="6_d4f28"]
 [ext_resource type="Script" uid="uid://c8psdmxjdupve" path="res://Scripts/PocketTemplate.gd" id="7_73a8k"]
 [ext_resource type="PackedScene" uid="uid://b3ckfphaafp06" path="res://Scenes/PocketCard.tscn" id="7_iuea6"]
-[ext_resource type="Resource" uid="uid://cjulmtw8cqawh" path="res://Pockets/BluePocket.tres" id="8_q8sds"]
-[ext_resource type="Resource" uid="uid://drh4ie7d2a1n0" path="res://Pockets/OrangePocket.tres" id="9_yr2pg"]
-[ext_resource type="Resource" uid="uid://4f7ts6xypijd" path="res://Pockets/PurplePocket.tres" id="10_ylpyt"]
+[ext_resource type="Resource" uid="uid://cjulmtw8cqawh" path="res://Pockets/ValuablePocket.tres" id="8_q8sds"]
+[ext_resource type="Resource" uid="uid://drh4ie7d2a1n0" path="res://Pockets/MagnetPocket.tres" id="9_yr2pg"]
+[ext_resource type="Resource" uid="uid://4f7ts6xypijd" path="res://Pockets/SpinPocket.tres" id="10_ylpyt"]
+[ext_resource type="Resource" uid="uid://7u7dyjccqo2p" path="res://Pockets/BlackPocket.tres" id="11_ev6kq"]
+[ext_resource type="Resource" uid="uid://dst1ukvhbx1e0" path="res://Pockets/RedPocket.tres" id="12_jn25s"]
 [ext_resource type="Script" uid="uid://bce82ojvm26j5" path="res://Scripts/CharmData.gd" id="12_yr2pg"]
+[ext_resource type="Resource" uid="uid://dqtivdjxsdss6" path="res://Pockets/SeedPocket.tres" id="13_jn25s"]
 [ext_resource type="PackedScene" uid="uid://cajp1rs6gyofo" path="res://Scenes/DisplayCharmCard.tscn" id="13_wyocf"]
 [ext_resource type="Resource" uid="uid://cm2l2u8ltwq37" path="res://Charms/RedTie.tres" id="13_ylpyt"]
 [ext_resource type="PackedScene" uid="uid://by0iq3msqpg2a" path="res://Scenes/CharmCard.tscn" id="14_ylpyt"]
+[ext_resource type="Resource" uid="uid://0varrlefku33" path="res://Charms/BlackTie.tres" id="15_yc6xl"]
+[ext_resource type="Resource" uid="uid://b5hjp7ms23qee" path="res://Charms/Outreach.tres" id="16_k6vqf"]
+[ext_resource type="Resource" uid="uid://dnlw6ywxjat4v" path="res://Charms/SpareBall.tres" id="18_ev6kq"]
 
 [sub_resource type="Theme" id="Theme_ws5ob"]
 default_font = ExtResource("2_d4f28")
@@ -228,11 +234,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_d4f28")
-PocketPool = Array[ExtResource("7_73a8k")]([ExtResource("8_q8sds"), ExtResource("9_yr2pg"), ExtResource("10_ylpyt")])
+PocketPool = Array[ExtResource("7_73a8k")]([ExtResource("8_q8sds"), ExtResource("9_yr2pg"), ExtResource("10_ylpyt"), ExtResource("11_ev6kq"), ExtResource("12_jn25s"), ExtResource("13_jn25s")])
+OfferCount = 2
 CardScene = ExtResource("7_iuea6")
 CharmCardScene = ExtResource("14_ylpyt")
 DisplayCharmCardScene = ExtResource("13_wyocf")
-CharmPool = Array[ExtResource("12_yr2pg")]([ExtResource("13_ylpyt")])
+CharmPool = Array[ExtResource("12_yr2pg")]([ExtResource("15_yc6xl"), ExtResource("16_k6vqf"), ExtResource("13_ylpyt"), ExtResource("18_ev6kq")])
+CharmOfferCount = 2
 
 [node name="Background" type="ColorRect" parent="UI/Shop" unique_id=1604025868]
 layout_mode = 1

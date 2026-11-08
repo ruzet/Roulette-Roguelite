@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_5jbp4")
 Title = "Red Tie"
-Description = "+ 0.2x Payout on Red Pockets"
+Description = "+0.5x Payout on Red Pockets"
 metadata/_custom_type_script = "uid://bce82ojvm26j5"

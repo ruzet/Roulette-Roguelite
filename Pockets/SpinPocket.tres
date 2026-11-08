@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PocketTemplate" format=3 uid="uid://4f7ts6xypijd"]
+
+[ext_resource type="Script" uid="uid://bm0mpjsxirtws" path="res://Scripts/PocketEffect.gd" id="1_8aeyo"]
+[ext_resource type="Script" uid="uid://c8psdmxjdupve" path="res://Scripts/PocketTemplate.gd" id="2_26xda"]
+
+[resource]
+script = ExtResource("2_26xda")
+Title = "Spin"
+Description = "Adds a Spin to the Spins Left in the round"
+ColorID = &"Purple"
+DisplayColor = Color(0.51861924, 0.4428827, 0.9394828, 1)
+metadata/_custom_type_script = "uid://c8psdmxjdupve"

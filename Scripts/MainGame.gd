@@ -33,6 +33,7 @@ func _ready() -> void:
 
 	SpinButton.pressed.connect(_OnSpinPressed)
 	Wheel.SpinFinished.connect(_OnSpinFinished)
+	Wheel.BallLanded.connect(_OnBallLanded)
 	WheelArea.resized.connect(_PlaceWheel)
 	%PlusButton.pressed.connect(_ChangeStake.bind(1))
 	%MinusButton.pressed.connect(_ChangeStake.bind(-1))
@@ -56,7 +57,11 @@ func _UpdateButton() -> void:
 
 func _WinRound():
 	Round += 1
-	if Round == 0: Round = 1
+	if Round == 0: 
+		Round = 1 
+		Quota = 100
+	elif Round > 1:
+		Quota *= 2
 	SpinsLeft = 3
 	%CurrentRound.text = "Round: " + str(Round)
 	%CurrentSpinsLeft.text = "Spins Left: " + str(SpinsLeft)
@@ -99,3 +104,11 @@ func _OnSpinFinished(Results: Array[PocketData]) -> void:
 		else:
 			_WinRound()
 	_UpdateButton()
+
+func _OnBallLanded(_BallIndex: int, _Pocket: PocketData, _Context: Dictionary):
+	if _Pocket.ColorID == &"LightGreen":
+		Source.AddNumber(Source.Pockets.size(), &"LightGreen", 1)
+	if _Pocket.ColorID == &"Purple":
+		SpinsLeft += 1
+		%CurrentSpinsLeft.text = "Spins Left: " + str(SpinsLeft)
+	

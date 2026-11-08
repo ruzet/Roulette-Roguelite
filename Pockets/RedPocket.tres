@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PocketTemplate" format=3 uid="uid://dst1ukvhbx1e0"]
+
+[ext_resource type="Script" uid="uid://bm0mpjsxirtws" path="res://Scripts/PocketEffect.gd" id="1_n0xij"]
+[ext_resource type="Script" uid="uid://c8psdmxjdupve" path="res://Scripts/PocketTemplate.gd" id="2_om46o"]
+
+[resource]
+script = ExtResource("2_om46o")
+Title = "Red"
+Description = "A Normal Pocket"
+ColorID = &"Red"
+DisplayColor = Color(0.7058824, 0, 0, 1)
+metadata/_custom_type_script = "uid://c8psdmxjdupve"

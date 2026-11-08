@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PocketTemplate" format=3 uid="uid://dqtivdjxsdss6"]
+
+[ext_resource type="Script" uid="uid://bm0mpjsxirtws" path="res://Scripts/PocketEffect.gd" id="1_4u35t"]
+[ext_resource type="Script" uid="uid://c8psdmxjdupve" path="res://Scripts/PocketTemplate.gd" id="2_yx0eb"]
+
+[resource]
+script = ExtResource("2_yx0eb")
+Title = "Seed"
+Description = "This Pocket creates another Pocket if a ball lands on this Pocket
+0.75x Payout"
+ColorID = &"LightGreen"
+DisplayColor = Color(0.5882353, 0.7058824, 0, 1)
+BaseWeight = 1000000000.0
+PayoutMultiplier = 0.75
+metadata/_custom_type_script = "uid://c8psdmxjdupve"

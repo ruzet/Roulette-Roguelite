@@ -1,10 +1,11 @@
 [gd_resource type="Resource" script_class="PocketTemplate" format=3 uid="uid://cjulmtw8cqawh"]
 
-[ext_resource type="Script" uid="uid://bm0mpjsxirtws" path="res://Scripts/PocketEffect.gd" id="1_qh3ci"]
-[ext_resource type="Script" uid="uid://c8psdmxjdupve" path="res://Scripts/PocketTemplate.gd" id="2_wxt4v"]
+[ext_resource type="Script" uid="uid://bm0mpjsxirtws" path="res://Scripts/PocketEffect.gd" id="1_oecit"]
+[ext_resource type="Script" uid="uid://c8psdmxjdupve" path="res://Scripts/PocketTemplate.gd" id="2_r154a"]
 
 [resource]
-script = ExtResource("2_wxt4v")
+script = ExtResource("2_r154a")
+Title = "Valuable"
 Description = "1.25x Payout"
 DisplayColor = Color(0.11151717, 0.5780991, 0.99999994, 1)
 PayoutMultiplier = 1.25
