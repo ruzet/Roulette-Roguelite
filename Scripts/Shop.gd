@@ -21,6 +21,7 @@ signal Closed
 @onready var DoneButton: Button = %DoneButton
 @onready var ShopChips: Label = get_node_or_null("%ShopChips")
 
+var OwnedCharms: Array[CharmData] = []
 var _RNG: RandomNumberGenerator
 var _Book: BetBook
 
@@ -69,10 +70,10 @@ func _RefreshCharmCards():
 func _Roll(Items: Array, Count: int):
 	var Pool = Items.duplicate()
 	var Picked: Array = []
+	for Charm in Pool: if OwnedCharms.has(Charm): Pool.remove_at(Pool.find(Charm))
 	while Picked.size() < Count && !Pool.is_empty():
 		var Total = 0.0
-		for T in Pool:
-			Total += T.ShopWeight
+		for T in Pool: Total += T.ShopWeight
 		var Roll = _RNG.randf() * Total
 		var Index = 0
 		for i in Pool.size():
@@ -97,6 +98,7 @@ func _OnCharmChosen(Charm: CharmData, Card: CharmCard):
 	_Book.Changed.emit()
 	Card.MarkSold()
 	CharmBought.emit(Charm)
+	OwnedCharms.append(Charm)
 	var DisplayCard = DisplayCharmCardScene.instantiate() as DisplayCharmCard
 	%CharmScrollContainer/VBoxContainer.add_child(DisplayCard)
 	DisplayCard.Setup(Charm)

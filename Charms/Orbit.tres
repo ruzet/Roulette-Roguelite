@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SpareBall" format=3 uid="uid://cjo7buwkkal37"]
+
+[ext_resource type="Script" uid="uid://bpvn6p8wbweo1" path="res://Scripts/Charms/Orbit.gd" id="1_sqo3l"]
+
+[resource]
+script = ExtResource("1_sqo3l")
+Title = "Orbit"
+Description = "+2 Spins every round"
+metadata/_custom_type_script = "uid://bce82ojvm26j5"

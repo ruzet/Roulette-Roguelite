@@ -10,6 +10,5 @@ Description = "This Pocket creates another Pocket if a ball lands on this Pocket
 0.75x Payout"
 ColorID = &"LightGreen"
 DisplayColor = Color(0.5882353, 0.7058824, 0, 1)
-BaseWeight = 1000000000.0
 PayoutMultiplier = 0.75
 metadata/_custom_type_script = "uid://c8psdmxjdupve"

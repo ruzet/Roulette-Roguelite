@@ -22,6 +22,8 @@
 [ext_resource type="Resource" uid="uid://b5hjp7ms23qee" path="res://Charms/Outreach.tres" id="16_k6vqf"]
 [ext_resource type="Resource" uid="uid://dnlw6ywxjat4v" path="res://Charms/SpareBall.tres" id="18_ev6kq"]
 [ext_resource type="Resource" uid="uid://7hosen3n3pas" path="res://Charms/Cashback.tres" id="22_glaac"]
+[ext_resource type="Resource" uid="uid://cjo7buwkkal37" path="res://Charms/Orbit.tres" id="23_7p2u3"]
+[ext_resource type="Script" uid="uid://bqnh58n38f7e8" path="res://Scripts/EscapeMenu.gd" id="24_him8o"]
 
 [sub_resource type="Theme" id="Theme_ws5ob"]
 default_font = ExtResource("2_d4f28")
@@ -29,6 +31,7 @@ default_font_size = 16
 
 [node name="MainGame" type="Node2D" unique_id=2099473463]
 script = ExtResource("1_321ql")
+metadata/_edit_vertical_guides_ = [-347.0, -338.0, -335.0]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=240550285]
 
@@ -240,7 +243,7 @@ OfferCount = 2
 CardScene = ExtResource("7_iuea6")
 CharmCardScene = ExtResource("14_ylpyt")
 DisplayCharmCardScene = ExtResource("13_wyocf")
-CharmPool = Array[ExtResource("12_yr2pg")]([ExtResource("15_yc6xl"), ExtResource("16_k6vqf"), ExtResource("13_ylpyt"), ExtResource("18_ev6kq"), ExtResource("22_glaac")])
+CharmPool = Array[ExtResource("12_yr2pg")]([ExtResource("15_yc6xl"), ExtResource("16_k6vqf"), ExtResource("13_ylpyt"), ExtResource("18_ev6kq"), ExtResource("22_glaac"), ExtResource("23_7p2u3")])
 CharmOfferCount = 5
 
 [node name="Background" type="ColorRect" parent="UI/Shop" unique_id=1604025868]
@@ -280,3 +283,60 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Done"
+
+[node name="EscapeMenu" type="Control" parent="UI" unique_id=973674099]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("24_him8o")
+
+[node name="Background" type="ColorRect" parent="UI/EscapeMenu" unique_id=1142079234]
+custom_minimum_size = Vector2(1280, 560)
+layout_mode = 0
+offset_left = 320.0
+offset_top = 280.0
+offset_right = 1600.0
+offset_bottom = 840.0
+color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+
+[node name="LabelContainer" type="VBoxContainer" parent="UI/EscapeMenu/Background" unique_id=8534340]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/EscapeMenu/Background/LabelContainer" unique_id=496262869]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Options"
+horizontal_alignment = 1
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="UI/EscapeMenu/Background" unique_id=957210157]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Resume" type="Button" parent="UI/EscapeMenu/Background/ButtonsContainer" unique_id=1165157471]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Resume"
+
+[node name="MainMenu" type="Button" parent="UI/EscapeMenu/Background/ButtonsContainer" unique_id=1257276245]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Main Menu (restarts run)"
+
+[node name="Quit" type="Button" parent="UI/EscapeMenu/Background/ButtonsContainer" unique_id=1989270669]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Quit"

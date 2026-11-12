@@ -17,7 +17,8 @@ var StakeIndex = 1
 var OwnedCharms: Array[CharmData] = []
 
 var Round = -3
-var SpinsLeft = 1
+var SpinsLeft = 3
+var SpinsGiven = 3
 var Quota = 0
 
 func _ready() -> void:
@@ -62,14 +63,13 @@ func _WinRound():
 		Quota = 100
 	elif Round > 1:
 		Quota *= 2
-	SpinsLeft = 3
+	SpinsLeft = SpinsGiven
 	%CurrentRound.text = "Round: " + str(Round)
 	%CurrentSpinsLeft.text = "Spins Left: " + str(SpinsLeft)
+	%CurrentQuota.text = "Quota: " + str(Quota)
 	ShopScreen.Open(ShopRNG, Book)
 
-func _LoseRound():
-	get_tree().quit()
-
+func _LoseRound(): get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 func _PlaceWheel():
 	var AreaSize = WheelArea.size
 	Wheel.position = AreaSize / 2
