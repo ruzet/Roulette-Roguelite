@@ -3,6 +3,7 @@ extends RefCounted
 signal Changed
 
 var Balance = 100
+var Cash = 0
 var PayoutMultiplier = 1
 var Bets = []
 var NumberPayoutMods: Array = []
@@ -26,7 +27,8 @@ func PayoutMultiplierFor(Pocket: PocketData):
 
 func PlaceBet(Type: BetType, Stake: int):
 	var Existing = false
-	if Stake <= 0 or Stake > Balance: return false
+	if Stake <= 0: return false
+	if Stake > Balance: Stake = Balance
 	Balance -= Stake
 
 	for Bet in Bets:

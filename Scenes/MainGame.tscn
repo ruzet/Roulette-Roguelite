@@ -31,7 +31,7 @@ default_font_size = 16
 
 [node name="MainGame" type="Node2D" unique_id=2099473463]
 script = ExtResource("1_321ql")
-metadata/_edit_vertical_guides_ = [-347.0, -338.0, -335.0]
+ResultFormat = null
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=240550285]
 
@@ -159,12 +159,6 @@ layout_mode = 2
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="CurrentChips" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=76782869]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Chips: 100"
-
 [node name="CurrentQuota" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=2089763444]
 unique_name_in_owner = true
 layout_mode = 2
@@ -227,6 +221,29 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="CurrencyContainer" type="VBoxContainer" parent="UI/Root/Margin/Columns/RightPanel" unique_id=195944237]
+layout_mode = 2
+
+[node name="CurrentChips" type="Label" parent="UI/Root/Margin/Columns/RightPanel/CurrencyContainer" unique_id=76782869]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Chips: 100"
+horizontal_alignment = 1
+
+[node name="CurrentCash" type="Label" parent="UI/Root/Margin/Columns/RightPanel/CurrencyContainer" unique_id=1807048708]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Cash: 0"
+horizontal_alignment = 1
+
+[node name="SkipSpin" type="Button" parent="UI/Root/Margin/Columns/RightPanel/CurrencyContainer" unique_id=1142079455]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Skip Spin (+0$)"
 
 [node name="Shop" type="Control" parent="UI" unique_id=2075300965]
 unique_name_in_owner = true

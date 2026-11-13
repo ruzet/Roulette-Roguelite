@@ -6,4 +6,5 @@
 script = ExtResource("1_7mxqi")
 Title = "Cashback"
 Description = "You get 15% of your chips back every bet"
+Cost = 2
 metadata/_custom_type_script = "uid://bce82ojvm26j5"

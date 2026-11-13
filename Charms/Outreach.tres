@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_8mjh6")
 Title = "Outreach"
-Description = "+3 Pocket Options
+Description = "+2 Pocket Options
 +1 Charm Option"
+Cost = 2
 metadata/_custom_type_script = "uid://bce82ojvm26j5"

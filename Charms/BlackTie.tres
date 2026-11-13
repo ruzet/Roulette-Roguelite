@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RedTie" format=3 uid="uid://0varrlefku33"]
+[gd_resource type="Resource" script_class="BlackTie" format=3 uid="uid://0varrlefku33"]
 
 [ext_resource type="Script" uid="uid://dqx1s8ipemwf" path="res://Scripts/Charms/BlackTie.gd" id="1_f1ar1"]
 
@@ -6,4 +6,5 @@
 script = ExtResource("1_f1ar1")
 Title = "Black Tie"
 Description = "+0.5x Payout on Black Pockets"
+Cost = 2
 metadata/_custom_type_script = "uid://bce82ojvm26j5"

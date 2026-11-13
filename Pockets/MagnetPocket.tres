@@ -7,9 +7,9 @@
 script = ExtResource("2_bixh4")
 Title = "Magnet"
 Description = "Higher Chance for a ball to land on this Pocket
-0.6x Payout"
+0.55x Payout"
 ColorID = &"Orange"
 DisplayColor = Color(0.9608813, 0.50486654, 0.32095376, 1)
-BaseWeight = 7.5
-PayoutMultiplier = 0.6
+BaseWeight = 2.0
+PayoutMultiplier = 0.55
 metadata/_custom_type_script = "uid://c8psdmxjdupve"

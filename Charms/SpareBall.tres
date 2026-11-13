@@ -6,4 +6,5 @@
 script = ExtResource("1_ek53p")
 Title = "Spare Ball"
 Description = "+1 Ball when spinning"
+Cost = 2
 metadata/_custom_type_script = "uid://bce82ojvm26j5"

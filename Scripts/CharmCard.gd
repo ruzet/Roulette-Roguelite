@@ -2,8 +2,8 @@ class_name CharmCard
 extends Button
 signal Chosen(Charm: CharmData)
 
-@export var CostFormat = "Cost: %d"
-@export var SoldText = "SOLD"
+@export var CostFormat = "Cost: %d$"
+@export var SoldText = "Sold!!"
 
 var Charm: CharmData
 var Sold = false
@@ -20,7 +20,7 @@ func Setup(NewCharm: CharmData):
 	DescriptionLabel.text = Charm.Description
 	CostLabel.text = CostFormat % Charm.Cost
 
-func Refresh(Chips: int): disabled = Sold or Chips < Charm.Cost
+func Refresh(Cash: int): disabled = Sold or Cash < Charm.Cost
 func MarkSold():
 	Sold = true
 	disabled = true
