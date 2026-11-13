@@ -31,7 +31,6 @@ default_font_size = 16
 
 [node name="MainGame" type="Node2D" unique_id=2099473463]
 script = ExtResource("1_321ql")
-ResultFormat = null
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=240550285]
 
@@ -79,7 +78,7 @@ BetButtonScene = ExtResource("4_kvfik")
 [node name="ChipsLabel" type="Label" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/Scroll/BettingTable" unique_id=1864947361]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 75
 horizontal_alignment = 1
 
 [node name="OutsideBets" type="HFlowContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/Scroll/BettingTable" unique_id=1249547250]
@@ -162,19 +161,19 @@ alignment = 1
 [node name="CurrentQuota" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=2089763444]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Quota: 0"
+theme_override_font_sizes/font_size = 75
+text = "Quota: 120"
 
 [node name="CurrentRound" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=190982477]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Round: -3"
+theme_override_font_sizes/font_size = 75
+text = "Round: 1"
 
 [node name="CurrentSpinsLeft" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=360990769]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 75
 text = "Spins Left: 3"
 
 [node name="WheelArea" type="Panel" parent="UI/Root/Margin/Columns/CenterColumn" unique_id=2004620207]
@@ -201,8 +200,8 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 40
-text = "Charms (0/7)"
+theme_override_font_sizes/font_size = 75
+text = "Charms (0/5)"
 horizontal_alignment = 1
 
 [node name="CharmsContainer" type="Panel" parent="UI/Root/Margin/Columns/RightPanel" unique_id=51041000]
@@ -211,10 +210,12 @@ size_flags_vertical = 3
 
 [node name="CharmScrollContainer" type="ScrollContainer" parent="UI/Root/Margin/Columns/RightPanel/CharmsContainer" unique_id=638188414]
 unique_name_in_owner = true
-layout_mode = 0
-offset_top = 4.0
-offset_right = 469.0
-offset_bottom = 1033.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Root/Margin/Columns/RightPanel/CharmsContainer/CharmScrollContainer" unique_id=495578541]

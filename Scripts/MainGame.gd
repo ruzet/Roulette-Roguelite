@@ -15,7 +15,6 @@ var Source := PocketSet.new()
 var Book := BetBook.new()
 var ShopRNG = RandomNumberGenerator.new()
 var StakeIndex = 1
-var OwnedCharms: Array[CharmData] = []
 var QuotaDict: Dictionary= {
 	1: 150,
 	2: 250,
@@ -29,6 +28,7 @@ var Round = 1
 var SpinsLeft = 3
 var SpinsGiven = 3
 var CashPerSkip = 2
+var CharmsLimit = 5
 var Quota = 0
 
 func _ready() -> void:
@@ -58,13 +58,15 @@ func _ready() -> void:
 
 func AddCharm(Charm: CharmData):
 	var Owned = Charm.duplicate() as CharmData
-	OwnedCharms.append(Owned)
+	ShopScreen.OwnedCharms.append(Owned)
 	Owned.OnAdded(self)
+	_UpdateLabels()
 
 func RemoveCharm(Charm: CharmData):
-	if OwnedCharms.has(Charm):
-		OwnedCharms.erase(Charm)
+	if ShopScreen.OwnedCharms.has(Charm):
+		ShopScreen.OwnedCharms.erase(Charm)
 		Charm.OnRemoved(self)
+		_UpdateLabels()
 
 func _UpdateRound():
 	Round += 1
@@ -83,10 +85,11 @@ func _UpdateLabels():
 	%CurrentRound.text = "Round: " + str(Round)
 	%CurrentSpinsLeft.text = "Spins Left: " + str(SpinsLeft)
 	%CurrentQuota.text = "Quota: " + str(Quota)
+	%CharmsLabel.text = "Charms (" + str(ShopScreen.OwnedCharms.size()) + "/" + str(CharmsLimit) + ")"
 
 func _WinRound():
 	SkipSpinButton.disabled = false
-	ShopScreen.Open(ShopRNG, Book, OwnedCharms)
+	ShopScreen.Open(ShopRNG, Book)
 	
 func _LoseRound(): get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 func _PlaceWheel():

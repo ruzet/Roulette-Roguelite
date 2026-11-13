@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Outreach" format=3 uid="uid://bu8ynv0xl8t1d"]
+
+[ext_resource type="Script" uid="uid://ndykcad76rxg" path="res://Scripts/Charms/PocketDimension.gd" id="1_cs8oi"]
+
+[resource]
+script = ExtResource("1_cs8oi")
+Title = "Pocket Dimension"
+Description = "+2 Charm Space"
+Cost = 2
+metadata/_custom_type_script = "uid://bce82ojvm26j5"

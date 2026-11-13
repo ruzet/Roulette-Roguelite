@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://dle1vdxlwtgec"]
 
 [ext_resource type="Script" uid="uid://c88mxdi5ds7ve" path="res://Scripts/MainMenu.gd" id="1_tt5f1"]
+[ext_resource type="Theme" uid="uid://byk11qtanpmjo" path="res://UI/MainTheme.tres" id="2_853f1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_853f1"]
+bg_color = Color(0.60249597, 0.15840486, 0.1876044, 1)
+border_color = Color(0.40392157, 0, 0, 1)
 
 [node name="MainMenu" type="Control" unique_id=676830254]
 layout_mode = 3
@@ -11,6 +16,84 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tt5f1")
 
+[node name="Background" type="Panel" parent="." unique_id=1996472345]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_853f1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_853f1")
+
+[node name="TitlePanel" type="Panel" parent="." unique_id=1260804581]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 0
+offset_left = 85.0
+offset_top = 85.0
+offset_right = 1835.0
+offset_bottom = 285.0
+theme = ExtResource("2_853f1")
+
+[node name="Title" type="Label" parent="TitlePanel" unique_id=1492790887]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Roulette Roguelite"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SeedPanel" type="Panel" parent="." unique_id=1651466932]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 800.0
+offset_right = 1885.0
+offset_bottom = 1300.0
+theme = ExtResource("2_853f1")
+
+[node name="MarginContainer" type="MarginContainer" parent="SeedPanel" unique_id=1780726227]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SeedPanel/MarginContainer" unique_id=1474760086]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SeedTitle" type="Label" parent="SeedPanel/MarginContainer/VBoxContainer" unique_id=1656953290]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Seeded Runs"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Disclaimer" type="Label" parent="SeedPanel/MarginContainer/VBoxContainer" unique_id=561305302]
+layout_mode = 2
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 50
+text = "Seeded Discoveries don't count"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SeedInput" type="LineEdit" parent="SeedPanel/MarginContainer/VBoxContainer" unique_id=197343831]
+layout_mode = 2
+theme = ExtResource("2_853f1")
+theme_override_font_sizes/font_size = 80
+placeholder_text = "Enter Seed Here"
+alignment = 1
+select_all_on_focus = true
+
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=180579642]
 layout_mode = 1
 anchors_preset = 15
@@ -19,31 +102,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LabelContainer" type="VBoxContainer" parent="CenterContainer" unique_id=234872429]
-custom_minimum_size = Vector2(1920, 1080)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/LabelContainer" unique_id=1492790887]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "Roulette Roguelite"
-horizontal_alignment = 1
-
 [node name="ButtonsContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1762511491]
-custom_minimum_size = Vector2(1920, 0)
+custom_minimum_size = Vector2(1700, 0)
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="PlayButton" type="Button" parent="CenterContainer/ButtonsContainer" unique_id=213239194]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("2_853f1")
+theme_override_font_sizes/font_size = 70
 text = "Play"
 
-[node name="SeedButton" type="Button" parent="CenterContainer/ButtonsContainer" unique_id=1993247684]
+[node name="Discoveries" type="Button" parent="CenterContainer/ButtonsContainer" unique_id=1993247684]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Set Seed"
+theme = ExtResource("2_853f1")
+theme_override_font_sizes/font_size = 70
+disabled = true
+text = "Discoveries (Coming Soon)
+"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/ButtonsContainer" unique_id=1310660913]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("2_853f1")
+theme_override_font_sizes/font_size = 70
 text = "Quit"

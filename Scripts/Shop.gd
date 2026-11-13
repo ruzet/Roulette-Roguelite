@@ -20,12 +20,12 @@ signal Closed
 @onready var TitleLabel: Label = %Title
 @onready var DoneButton: Button = %DoneButton
 
-var OwnedCharms = []
+var OwnedCharms: Array[CharmData] = []
 var _RNG: RandomNumberGenerator
 var _Book: BetBook
 
 func _ready() -> void: DoneButton.pressed.connect(_Close)
-func Open(ShopRNG: RandomNumberGenerator, ShopBook: BetBook, OwnedCharms: Array[CharmData]):
+func Open(ShopRNG: RandomNumberGenerator, ShopBook: BetBook):
 	var CharmAvailible = false
 	_RNG = ShopRNG
 	_Book = ShopBook
