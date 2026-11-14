@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dpn55ghxflkd2" path="res://Scripts/MainGame.gd" id="1_321ql"]
 [ext_resource type="FontFile" uid="uid://clq1j6dwhc0mm" path="res://Assets/JQKAsWild.ttf" id="2_d4f28"]
 [ext_resource type="Script" uid="uid://b5jixhgunqxc" path="res://Scripts/BettingTable.gd" id="3_d4f28"]
+[ext_resource type="Theme" uid="uid://b6h47bfge1l8d" path="res://UI/GameTheme.tres" id="3_fgk2h"]
 [ext_resource type="PackedScene" uid="uid://dqo422krm08bt" path="res://Scenes/BetButton.tscn" id="4_kvfik"]
 [ext_resource type="Script" uid="uid://ce5ci53vnlkwn" path="res://Scripts/RouletteWheel.gd" id="5_iuea6"]
 [ext_resource type="Script" uid="uid://c3k50p0vw0qre" path="res://Scripts/Shop.gd" id="6_d4f28"]
@@ -41,33 +42,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 2
 theme = SubResource("Theme_ws5ob")
 
-[node name="Margin" type="MarginContainer" parent="UI/Root" unique_id=106304130]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Columns" type="HBoxContainer" parent="UI/Root" unique_id=354577841]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="Columns" type="HBoxContainer" parent="UI/Root/Margin" unique_id=354577841]
+[node name="LeftColumn" type="VBoxContainer" parent="UI/Root/Columns" unique_id=191382280]
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
+theme = ExtResource("3_fgk2h")
 
-[node name="LeftColumn" type="VBoxContainer" parent="UI/Root/Margin/Columns" unique_id=191382280]
-layout_mode = 2
-
-[node name="BettingPanel" type="PanelContainer" parent="UI/Root/Margin/Columns/LeftColumn" unique_id=1104972950]
+[node name="BettingPanel" type="PanelContainer" parent="UI/Root/Columns/LeftColumn" unique_id=1104972950]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
+theme = ExtResource("3_fgk2h")
 
-[node name="Scroll" type="ScrollContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel" unique_id=1257544357]
+[node name="Scroll" type="ScrollContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel" unique_id=1257544357]
 layout_mode = 2
+theme = ExtResource("3_fgk2h")
 horizontal_scroll_mode = 0
 
-[node name="BettingTable" type="VBoxContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/Scroll" unique_id=965049302]
+[node name="BettingTable" type="VBoxContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel/Scroll" unique_id=965049302]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -75,140 +77,161 @@ size_flags_vertical = 3
 script = ExtResource("3_d4f28")
 BetButtonScene = ExtResource("4_kvfik")
 
-[node name="ChipsLabel" type="Label" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/Scroll/BettingTable" unique_id=1864947361]
+[node name="ChipsLabel" type="Label" parent="UI/Root/Columns/LeftColumn/BettingPanel/Scroll/BettingTable" unique_id=1864947361]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(450, 0)
+custom_maximum_size = Vector2(450, -1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
+theme = ExtResource("3_fgk2h")
+theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
+text_overrun_behavior = 3
 
-[node name="OutsideBets" type="HFlowContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/Scroll/BettingTable" unique_id=1249547250]
+[node name="OutsideBets" type="HFlowContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel/Scroll/BettingTable" unique_id=1249547250]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
+theme = ExtResource("3_fgk2h")
 alignment = 1
 
-[node name="ButtonScrollContainer" type="ScrollContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/Scroll/BettingTable" unique_id=707439910]
+[node name="ButtonScrollContainer" type="ScrollContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel/Scroll/BettingTable" unique_id=707439910]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_fgk2h")
 
-[node name="NumbersGrid" type="GridContainer" parent="UI/Root/Margin/Columns/LeftColumn/BettingPanel/Scroll/BettingTable/ButtonScrollContainer" unique_id=667840764]
+[node name="NumbersGrid" type="GridContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel/Scroll/BettingTable/ButtonScrollContainer" unique_id=667840764]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("3_fgk2h")
 columns = 6
 
-[node name="ControlsPanel" type="PanelContainer" parent="UI/Root/Margin/Columns/LeftColumn" unique_id=43482170]
+[node name="ControlsPanel" type="PanelContainer" parent="UI/Root/Columns/LeftColumn" unique_id=43482170]
 layout_mode = 2
-size_flags_vertical = 3
+theme = ExtResource("3_fgk2h")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel" unique_id=78179017]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Root/Columns/LeftColumn/ControlsPanel" unique_id=78179017]
 layout_mode = 2
 
-[node name="ResultLabel" type="Label" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel/VBoxContainer" unique_id=1946437374]
+[node name="ResultLabel" type="Label" parent="UI/Root/Columns/LeftColumn/ControlsPanel/VBoxContainer" unique_id=1946437374]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("3_fgk2h")
+theme_override_font_sizes/font_size = 40
 text = "Place a bet, then spin"
 horizontal_alignment = 1
+text_overrun_behavior = 3
 
-[node name="SpinButton" type="Button" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel/VBoxContainer" unique_id=1822264898]
+[node name="StakeLabel" type="Label" parent="UI/Root/Columns/LeftColumn/ControlsPanel/VBoxContainer" unique_id=2007073314]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("3_fgk2h")
+theme_override_font_sizes/font_size = 30
+text = "Stake = 0"
+horizontal_alignment = 1
+
+[node name="SpinButton" type="Button" parent="UI/Root/Columns/LeftColumn/ControlsPanel/VBoxContainer" unique_id=1822264898]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_fgk2h")
 theme_override_font_sizes/font_size = 50
 text = "Spin"
 
-[node name="ClearButton" type="Button" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel/VBoxContainer" unique_id=666726144]
+[node name="ClearButton" type="Button" parent="UI/Root/Columns/LeftColumn/ControlsPanel/VBoxContainer" unique_id=666726144]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("3_fgk2h")
 theme_override_font_sizes/font_size = 50
 text = "Clear Bets"
 
-[node name="StakeRow" type="HBoxContainer" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel/VBoxContainer" unique_id=898535555]
+[node name="StakeRow" type="HBoxContainer" parent="UI/Root/Columns/LeftColumn/ControlsPanel/VBoxContainer" unique_id=898535555]
 layout_mode = 2
 
-[node name="MinusButton" type="Button" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel/VBoxContainer/StakeRow" unique_id=171281659]
+[node name="MinusButton" type="Button" parent="UI/Root/Columns/LeftColumn/ControlsPanel/VBoxContainer/StakeRow" unique_id=171281659]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("3_fgk2h")
 theme_override_font_sizes/font_size = 40
 text = "- Stake"
 
-[node name="PlusButton" type="Button" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel/VBoxContainer/StakeRow" unique_id=1882193098]
+[node name="PlusButton" type="Button" parent="UI/Root/Columns/LeftColumn/ControlsPanel/VBoxContainer/StakeRow" unique_id=1882193098]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("3_fgk2h")
 theme_override_font_sizes/font_size = 40
 text = "+ Stake"
 
-[node name="StakeLabel" type="Label" parent="UI/Root/Margin/Columns/LeftColumn/ControlsPanel/VBoxContainer/StakeRow" unique_id=2007073314]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="CenterColumn" type="VBoxContainer" parent="UI/Root/Margin/Columns" unique_id=1022382236]
+[node name="CenterColumn" type="VBoxContainer" parent="UI/Root/Columns" unique_id=1022382236]
+custom_minimum_size = Vector2(1010, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.5
+theme = ExtResource("3_fgk2h")
 
-[node name="InfoPanel" type="PanelContainer" parent="UI/Root/Margin/Columns/CenterColumn" unique_id=1874670489]
+[node name="InfoPanel" type="PanelContainer" parent="UI/Root/Columns/CenterColumn" unique_id=1874670489]
 layout_mode = 2
+theme = ExtResource("3_fgk2h")
 
-[node name="Info" type="HBoxContainer" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel" unique_id=416174405]
+[node name="Info" type="HBoxContainer" parent="UI/Root/Columns/CenterColumn/InfoPanel" unique_id=416174405]
 layout_mode = 2
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="CurrentQuota" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=2089763444]
+[node name="CurrentQuota" type="Label" parent="UI/Root/Columns/CenterColumn/InfoPanel/Info" unique_id=2089763444]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 50
 text = "Quota: 120"
 
-[node name="CurrentRound" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=190982477]
+[node name="CurrentRound" type="Label" parent="UI/Root/Columns/CenterColumn/InfoPanel/Info" unique_id=190982477]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 50
 text = "Round: 1"
 
-[node name="CurrentSpinsLeft" type="Label" parent="UI/Root/Margin/Columns/CenterColumn/InfoPanel/Info" unique_id=360990769]
+[node name="CurrentSpinsLeft" type="Label" parent="UI/Root/Columns/CenterColumn/InfoPanel/Info" unique_id=360990769]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
+theme = ExtResource("3_fgk2h")
+theme_override_font_sizes/font_size = 50
 text = "Spins Left: 3"
 
-[node name="WheelArea" type="Panel" parent="UI/Root/Margin/Columns/CenterColumn" unique_id=2004620207]
+[node name="WheelArea" type="Panel" parent="UI/Root/Columns/CenterColumn" unique_id=2004620207]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_fgk2h")
 
-[node name="RouletteWheel" type="Node2D" parent="UI/Root/Margin/Columns/CenterColumn/WheelArea" unique_id=1206488410]
+[node name="RouletteWheel" type="Node2D" parent="UI/Root/Columns/CenterColumn/WheelArea" unique_id=1206488410]
 unique_name_in_owner = true
 position = Vector2(683, 536)
 script = ExtResource("5_iuea6")
 
-[node name="RightPanel" type="VBoxContainer" parent="UI/Root/Margin/Columns" unique_id=352151761]
-custom_minimum_size = Vector2(420, 0)
-custom_maximum_size = Vector2(420, -1)
+[node name="RightPanel" type="VBoxContainer" parent="UI/Root/Columns" unique_id=352151761]
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+theme = ExtResource("3_fgk2h")
 
-[node name="LabelPanel" type="PanelContainer" parent="UI/Root/Margin/Columns/RightPanel" unique_id=30721499]
+[node name="LabelPanel" type="PanelContainer" parent="UI/Root/Columns/RightPanel" unique_id=30721499]
 layout_mode = 2
 
-[node name="CharmsLabel" type="Label" parent="UI/Root/Margin/Columns/RightPanel/LabelPanel" unique_id=140192662]
+[node name="CharmsLabel" type="Label" parent="UI/Root/Columns/RightPanel/LabelPanel" unique_id=140192662]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 50
 text = "Charms (0/5)"
 horizontal_alignment = 1
 
-[node name="CharmsContainer" type="Panel" parent="UI/Root/Margin/Columns/RightPanel" unique_id=51041000]
+[node name="CharmsContainer" type="Panel" parent="UI/Root/Columns/RightPanel" unique_id=51041000]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CharmScrollContainer" type="ScrollContainer" parent="UI/Root/Margin/Columns/RightPanel/CharmsContainer" unique_id=638188414]
+[node name="CharmScrollContainer" type="ScrollContainer" parent="UI/Root/Columns/RightPanel/CharmsContainer" unique_id=638188414]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -218,33 +241,36 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Root/Margin/Columns/RightPanel/CharmsContainer/CharmScrollContainer" unique_id=495578541]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Root/Columns/RightPanel/CharmsContainer/CharmScrollContainer" unique_id=495578541]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CurrencyContainer" type="VBoxContainer" parent="UI/Root/Margin/Columns/RightPanel" unique_id=195944237]
+[node name="CurrencyContainer" type="VBoxContainer" parent="UI/Root/Columns/RightPanel" unique_id=195944237]
 layout_mode = 2
 
-[node name="CurrentChips" type="Label" parent="UI/Root/Margin/Columns/RightPanel/CurrencyContainer" unique_id=76782869]
+[node name="CurrentChips" type="Label" parent="UI/Root/Columns/RightPanel/CurrencyContainer" unique_id=76782869]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "Chips: 100"
 horizontal_alignment = 1
+text_overrun_behavior = 3
 
-[node name="CurrentCash" type="Label" parent="UI/Root/Margin/Columns/RightPanel/CurrencyContainer" unique_id=1807048708]
+[node name="CurrentCash" type="Label" parent="UI/Root/Columns/RightPanel/CurrencyContainer" unique_id=1807048708]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
-text = "Cash: 0"
+text = "Cash: 0$"
 horizontal_alignment = 1
+text_overrun_behavior = 3
 
-[node name="SkipSpin" type="Button" parent="UI/Root/Margin/Columns/RightPanel/CurrencyContainer" unique_id=1142079455]
+[node name="SkipSpin" type="Button" parent="UI/Root/Columns/RightPanel/CurrencyContainer" unique_id=1142079455]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "Skip Spin (+0$)"
+text_overrun_behavior = 3
 
 [node name="Shop" type="Control" parent="UI" unique_id=2075300965]
 unique_name_in_owner = true

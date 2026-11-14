@@ -5,9 +5,9 @@ signal BetPlaced(Type: BetType)
 @export var ChipValue = 5
 @export var HouseEdge = 0.02
 @export var TintByColor = true
-@export var InfoFormat = "Total Staked: %d (Stake = %d)"
+@export var InfoFormat = "Total Staked: %d"
 @export var BetButtonScene: PackedScene
-@export var StakeFormat = "%d"
+@export var StakeFormat = "Stake: %d"
 
 var Locked = false
 var Source = PocketSet.new()
@@ -58,6 +58,7 @@ func _AddButton(Parent: Container, Type: BetType, Tint = Color.WHITE) -> void:
 		NewButton = Button.new()
 		NewButton.custom_minimum_size = Vector2(70, 40)
 	NewButton.text = Type.DisplayName
+	NewButton.find_child("BetLabel", true).text = Type.DisplayName
 	NewButton.set_meta("BaseText", Type.DisplayName)
 	NewButton.disabled = Hits == 0
 	NewButton.tooltip_text = "Pays %d:1" % int(Type.Payout)
@@ -68,7 +69,7 @@ func _AddButton(Parent: Container, Type: BetType, Tint = Color.WHITE) -> void:
 
 func _OnClearPressed() -> void: if not Locked: Book.Clear()
 func _RefreshInfo() -> void: 
-	ChipsLabel.text = InfoFormat % [Book.TotalStaked(), ChipValue] 
+	ChipsLabel.text = InfoFormat % Book.TotalStaked()
 	_RefreshStakes()
 
 func _OnBetPressed(Type: BetType) -> void:
@@ -99,11 +100,21 @@ func _RefreshStakes():
 			_ShowStake(B, Stakes.get(ID, 0))
 
 func _ShowStake(B: Button, Stake: int):
-	var StakeLabel = B.get_node_or_null("StakeLabel") as Label
-	if StakeLabel:
+	var BetLabel = B.get_node_or_null("LabelContainer/BetLabel") as Label
+	var StakeLabel = B.get_node_or_null("LabelContainer/StakeLabel") as Label
+	
+	if StakeLabel && BetLabel:
+		if Stake > 0:
+			B.add_theme_color_override("font_color", Color.from_rgba8(255, 255, 255, 0))
+			B.add_theme_color_override("font_hover_color", Color.from_rgba8(255, 255, 255, 0))
+			B.add_theme_color_override("font_focus_color", Color.from_rgba8(255, 255, 255, 0))
+			B.add_theme_color_override("font_pressed_color", Color.from_rgba8(255, 255, 255, 0))
+		else:
+			B.remove_theme_color_override("font_color")
+			B.remove_theme_color_override("font_hover_color")
+			B.remove_theme_color_override("font_focus_color")
+			B.remove_theme_color_override("font_pressed_color")
+
+		BetLabel.visible = Stake > 0
 		StakeLabel.visible = Stake > 0
 		StakeLabel.text = StakeFormat % Stake
-	elif Stake > 0:
-		B.text = "%s\n%s" % [B.get_meta("BaseText"), StakeFormat % Stake]
-	else:
-		B.text = B.get_meta("BaseText")

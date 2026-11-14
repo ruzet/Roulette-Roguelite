@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dle1vdxlwtgec"]
 
 [ext_resource type="Script" uid="uid://c88mxdi5ds7ve" path="res://Scripts/MainMenu.gd" id="1_tt5f1"]
-[ext_resource type="Theme" uid="uid://byk11qtanpmjo" path="res://UI/MainTheme.tres" id="2_853f1"]
+[ext_resource type="Theme" uid="uid://byk11qtanpmjo" path="res://UI/MenuTheme.tres" id="2_853f1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_853f1"]
 bg_color = Color(0.60249597, 0.15840486, 0.1876044, 1)
@@ -14,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_tt5f1")
 
 [node name="Background" type="Panel" parent="." unique_id=1996472345]
@@ -23,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("2_853f1")
 theme_override_styles/panel = SubResource("StyleBoxFlat_853f1")
 
@@ -33,6 +35,7 @@ offset_left = 85.0
 offset_top = 85.0
 offset_right = 1835.0
 offset_bottom = 285.0
+mouse_filter = 2
 theme = ExtResource("2_853f1")
 
 [node name="Title" type="Label" parent="TitlePanel" unique_id=1492790887]
@@ -51,9 +54,10 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 0
 offset_left = 35.0
-offset_top = 800.0
+offset_top = 750.0
 offset_right = 1885.0
-offset_bottom = 1300.0
+offset_bottom = 1050.0
+mouse_filter = 2
 theme = ExtResource("2_853f1")
 
 [node name="MarginContainer" type="MarginContainer" parent="SeedPanel" unique_id=1780726227]
@@ -63,12 +67,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SeedPanel/MarginContainer" unique_id=1474760086]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 8
 
 [node name="SeedTitle" type="Label" parent="SeedPanel/MarginContainer/VBoxContainer" unique_id=1656953290]
@@ -92,7 +98,6 @@ theme = ExtResource("2_853f1")
 theme_override_font_sizes/font_size = 80
 placeholder_text = "Enter Seed Here"
 alignment = 1
-select_all_on_focus = true
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=180579642]
 layout_mode = 1
@@ -101,6 +106,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1762511491]
 custom_minimum_size = Vector2(1700, 0)

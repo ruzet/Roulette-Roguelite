@@ -101,7 +101,7 @@ func _PlaceWheel():
 func _ChangeStake(Step: int):
 	StakeIndex = clampi(StakeIndex + Step, 0, Stakes.size() - 1)
 	Table.ChipValue = Stakes[StakeIndex]
-	%StakeLabel.text = str(Table.ChipValue)
+	%StakeLabel.text = "Stake = " + str(Table.ChipValue)
 	Book.Changed.emit()
 	
 func _SkipSpin():
