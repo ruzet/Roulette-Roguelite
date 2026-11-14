@@ -105,15 +105,17 @@ func _ShowStake(B: Button, Stake: int):
 	
 	if StakeLabel && BetLabel:
 		if Stake > 0:
-			B.add_theme_color_override("font_color", Color.from_rgba8(255, 255, 255, 0))
-			B.add_theme_color_override("font_hover_color", Color.from_rgba8(255, 255, 255, 0))
-			B.add_theme_color_override("font_focus_color", Color.from_rgba8(255, 255, 255, 0))
-			B.add_theme_color_override("font_pressed_color", Color.from_rgba8(255, 255, 255, 0))
+			B.add_theme_color_override("font_color", Color.from_rgba8(0, 0, 0, 0))
+			B.add_theme_color_override("font_hover_color", Color.from_rgba8(0, 0, 0, 0))
+			B.add_theme_color_override("font_focus_color", Color.from_rgba8(0, 0, 0, 0))
+			B.add_theme_color_override("font_pressed_color", Color.from_rgba8(0, 0, 0, 0))
+			B.add_theme_color_override("font_outline_color", Color.from_rgba8(0, 0, 0, 0))
 		else:
 			B.remove_theme_color_override("font_color")
 			B.remove_theme_color_override("font_hover_color")
 			B.remove_theme_color_override("font_focus_color")
 			B.remove_theme_color_override("font_pressed_color")
+			B.remove_theme_color_override("font_outline_color")
 
 		BetLabel.visible = Stake > 0
 		StakeLabel.visible = Stake > 0
