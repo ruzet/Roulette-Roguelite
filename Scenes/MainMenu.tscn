@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://dle1vdxlwtgec"]
 
 [ext_resource type="Script" uid="uid://c88mxdi5ds7ve" path="res://Scripts/MainMenu.gd" id="1_tt5f1"]
-[ext_resource type="Theme" uid="uid://byk11qtanpmjo" path="res://UI/MenuTheme.tres" id="2_853f1"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_853f1"]
-bg_color = Color(0.60249597, 0.15840486, 0.1876044, 1)
-border_color = Color(0.40392157, 0, 0, 1)
+[ext_resource type="Theme" uid="uid://byk11qtanpmjo" path="res://UI/MainTheme.tres" id="2_853f1"]
 
 [node name="MainMenu" type="Control" unique_id=676830254]
 layout_mode = 3
@@ -17,24 +13,22 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_tt5f1")
 
-[node name="Background" type="Panel" parent="." unique_id=1996472345]
+[node name="Background" type="ColorRect" parent="." unique_id=488714026]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("2_853f1")
-theme_override_styles/panel = SubResource("StyleBoxFlat_853f1")
+color = Color(0.63529414, 0, 0.12941177, 1)
 
 [node name="TitlePanel" type="Panel" parent="." unique_id=1260804581]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 0
 offset_left = 85.0
-offset_top = 85.0
+offset_top = 25.0
 offset_right = 1835.0
-offset_bottom = 285.0
+offset_bottom = 325.0
 mouse_filter = 2
 theme = ExtResource("2_853f1")
 
@@ -45,7 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 200
 text = "Roulette Roguelite"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -53,9 +47,9 @@ vertical_alignment = 1
 [node name="SeedPanel" type="Panel" parent="." unique_id=1651466932]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 0
-offset_left = 35.0
+offset_left = 85.0
 offset_top = 750.0
-offset_right = 1885.0
+offset_right = 1835.0
 offset_bottom = 1050.0
 mouse_filter = 2
 theme = ExtResource("2_853f1")
@@ -109,7 +103,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1762511491]
-custom_minimum_size = Vector2(1700, 0)
+custom_minimum_size = Vector2(1750, 0)
 layout_mode = 2
 theme_override_constants/separation = 20
 
