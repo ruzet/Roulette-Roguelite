@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c3k50p0vw0qre" path="res://Scripts/Shop.gd" id="6_d4f28"]
 [ext_resource type="Script" uid="uid://c8psdmxjdupve" path="res://Scripts/PocketTemplate.gd" id="7_73a8k"]
 [ext_resource type="PackedScene" uid="uid://b3ckfphaafp06" path="res://Scenes/PocketCard.tscn" id="7_iuea6"]
+[ext_resource type="Theme" uid="uid://cxcc76chpa5mv" path="res://UI/ShopTheme.tres" id="7_wn26v"]
 [ext_resource type="Resource" uid="uid://cjulmtw8cqawh" path="res://Pockets/ValuablePocket.tres" id="8_q8sds"]
 [ext_resource type="Resource" uid="uid://drh4ie7d2a1n0" path="res://Pockets/MagnetPocket.tres" id="9_yr2pg"]
 [ext_resource type="Resource" uid="uid://4f7ts6xypijd" path="res://Pockets/SpinPocket.tres" id="10_ylpyt"]
@@ -323,6 +324,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("7_wn26v")
 script = ExtResource("6_d4f28")
 PocketPool = Array[ExtResource("7_73a8k")]([ExtResource("8_q8sds"), ExtResource("9_yr2pg"), ExtResource("10_ylpyt"), ExtResource("11_ev6kq"), ExtResource("12_jn25s"), ExtResource("13_jn25s")])
 OfferCount = 2
@@ -339,6 +341,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("7_wn26v")
 color = Color(0.12573668, 0.27133554, 0.1802387, 1)
 
 [node name="Margin" type="MarginContainer" parent="UI/Shop" unique_id=1836936483]
@@ -348,13 +351,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("7_wn26v")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="Layout" type="VBoxContainer" parent="UI/Shop/Margin" unique_id=1431542057]
 layout_mode = 2
+theme = ExtResource("7_wn26v")
 
 [node name="Title" type="Label" parent="UI/Shop/Margin/Layout" unique_id=508468927]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("7_wn26v")
 theme_override_font_sizes/font_size = 80
 text = "Choose a Pocket"
 horizontal_alignment = 1
@@ -363,10 +373,13 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("7_wn26v")
+theme_override_constants/separation = 10
 
 [node name="DoneButton" type="Button" parent="UI/Shop/Margin/Layout" unique_id=1443746001]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("7_wn26v")
 theme_override_font_sizes/font_size = 50
 text = "Done"
 

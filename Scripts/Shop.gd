@@ -20,7 +20,7 @@ signal Closed
 @onready var TitleLabel: Label = %Title
 @onready var DoneButton: Button = %DoneButton
 
-var OwnedCharms: Array[CharmData] = []
+var OwnedCharms: Array = []
 var _RNG: RandomNumberGenerator
 var _Book: BetBook
 
