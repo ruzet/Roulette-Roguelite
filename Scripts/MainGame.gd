@@ -15,7 +15,7 @@ var Source := PocketSet.new()
 var Book := BetBook.new()
 var ShopRNG = RandomNumberGenerator.new()
 var StakeIndex = 1
-var QuotaDict: Dictionary= {
+var QuotaDict: Dictionary = {
 	1: 150,
 	2: 250,
 	3: 500,

@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://dpn55ghxflkd2" path="res://Scripts/MainGame.gd" id="1_321ql"]
 [ext_resource type="FontFile" uid="uid://clq1j6dwhc0mm" path="res://Assets/JQKAsWild.ttf" id="2_d4f28"]
 [ext_resource type="Script" uid="uid://b5jixhgunqxc" path="res://Scripts/BettingTable.gd" id="3_d4f28"]
-[ext_resource type="Theme" uid="uid://byk11qtanpmjo" path="res://UI/MainTheme.tres" id="3_fgk2h"]
+[ext_resource type="Theme" uid="uid://byk11qtanpmjo" path="res://UI/RedTheme.tres" id="3_fgk2h"]
 [ext_resource type="PackedScene" uid="uid://dqo422krm08bt" path="res://Scenes/BetButton.tscn" id="4_kvfik"]
 [ext_resource type="Script" uid="uid://ce5ci53vnlkwn" path="res://Scripts/RouletteWheel.gd" id="5_iuea6"]
 [ext_resource type="Script" uid="uid://c3k50p0vw0qre" path="res://Scripts/Shop.gd" id="6_d4f28"]
 [ext_resource type="Script" uid="uid://c8psdmxjdupve" path="res://Scripts/PocketTemplate.gd" id="7_73a8k"]
 [ext_resource type="PackedScene" uid="uid://b3ckfphaafp06" path="res://Scenes/PocketCard.tscn" id="7_iuea6"]
-[ext_resource type="Theme" uid="uid://cxcc76chpa5mv" path="res://UI/ShopTheme.tres" id="7_wn26v"]
+[ext_resource type="Theme" uid="uid://cxcc76chpa5mv" path="res://UI/GreenTheme.tres" id="7_wn26v"]
 [ext_resource type="Resource" uid="uid://cjulmtw8cqawh" path="res://Pockets/ValuablePocket.tres" id="8_q8sds"]
 [ext_resource type="Resource" uid="uid://drh4ie7d2a1n0" path="res://Pockets/MagnetPocket.tres" id="9_yr2pg"]
 [ext_resource type="Resource" uid="uid://4f7ts6xypijd" path="res://Pockets/SpinPocket.tres" id="10_ylpyt"]
@@ -26,6 +26,7 @@
 [ext_resource type="Resource" uid="uid://7hosen3n3pas" path="res://Charms/Cashback.tres" id="22_glaac"]
 [ext_resource type="Resource" uid="uid://cjo7buwkkal37" path="res://Charms/Orbit.tres" id="23_7p2u3"]
 [ext_resource type="Script" uid="uid://bqnh58n38f7e8" path="res://Scripts/EscapeMenu.gd" id="24_him8o"]
+[ext_resource type="Theme" uid="uid://c4x3nmkqdtaye" path="res://UI/GrayTheme.tres" id="27_cmrup"]
 
 [sub_resource type="Theme" id="Theme_ws5ob"]
 default_font = ExtResource("2_d4f28")
@@ -75,12 +76,19 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 theme = ExtResource("3_fgk2h")
 
-[node name="Scroll" type="ScrollContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel" unique_id=1257544357]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel" unique_id=1060747057]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Scroll" type="ScrollContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel/MarginContainer" unique_id=1257544357]
 layout_mode = 2
 theme = ExtResource("3_fgk2h")
 horizontal_scroll_mode = 0
 
-[node name="BettingTable" type="VBoxContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel/Scroll" unique_id=965049302]
+[node name="BettingTable" type="VBoxContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel/MarginContainer/Scroll" unique_id=965049302]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -89,17 +97,7 @@ theme = ExtResource("3_fgk2h")
 script = ExtResource("3_d4f28")
 BetButtonScene = ExtResource("4_kvfik")
 
-[node name="ChipsLabel" type="Label" parent="UI/Root/Columns/LeftColumn/BettingPanel/Scroll/BettingTable" unique_id=1864947361]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(450, 0)
-custom_maximum_size = Vector2(450, -1)
-layout_mode = 2
-theme = ExtResource("3_fgk2h")
-theme_override_font_sizes/font_size = 50
-horizontal_alignment = 1
-text_overrun_behavior = 3
-
-[node name="OutsideBets" type="HFlowContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel/Scroll/BettingTable" unique_id=1249547250]
+[node name="OutsideBets" type="HFlowContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel/MarginContainer/Scroll/BettingTable" unique_id=1249547250]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -107,12 +105,12 @@ size_flags_stretch_ratio = 0.2
 theme = ExtResource("3_fgk2h")
 alignment = 1
 
-[node name="ButtonScrollContainer" type="ScrollContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel/Scroll/BettingTable" unique_id=707439910]
+[node name="ButtonScrollContainer" type="ScrollContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel/MarginContainer/Scroll/BettingTable" unique_id=707439910]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_fgk2h")
 
-[node name="NumbersGrid" type="GridContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel/Scroll/BettingTable/ButtonScrollContainer" unique_id=667840764]
+[node name="NumbersGrid" type="GridContainer" parent="UI/Root/Columns/LeftColumn/BettingPanel/MarginContainer/Scroll/BettingTable/ButtonScrollContainer" unique_id=667840764]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -136,20 +134,24 @@ theme = ExtResource("3_fgk2h")
 
 [node name="ResultLabel" type="Label" parent="UI/Root/Columns/LeftColumn/ControlsPanel/MarginContainer/VBoxContainer" unique_id=1946437374]
 unique_name_in_owner = true
-layout_mode = 2
-theme = ExtResource("3_fgk2h")
-theme_override_font_sizes/font_size = 40
-text = "Place a bet, then spin"
-horizontal_alignment = 1
-text_overrun_behavior = 3
-
-[node name="StakeLabel" type="Label" parent="UI/Root/Columns/LeftColumn/ControlsPanel/MarginContainer/VBoxContainer" unique_id=2007073314]
-unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme = ExtResource("3_fgk2h")
 theme_override_font_sizes/font_size = 30
-text = "Stake = 0"
+text = "Place a bet, then spin"
 horizontal_alignment = 1
+vertical_alignment = 1
+resize_font_to_fit = true
+
+[node name="StakeLabel" type="Label" parent="UI/Root/Columns/LeftColumn/ControlsPanel/MarginContainer/VBoxContainer" unique_id=2007073314]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("3_fgk2h")
+theme_override_font_sizes/font_size = 30
+text = "Stake = 5"
+horizontal_alignment = 1
+resize_font_to_fit = true
 
 [node name="SpinButton" type="Button" parent="UI/Root/Columns/LeftColumn/ControlsPanel/MarginContainer/VBoxContainer" unique_id=1822264898]
 unique_name_in_owner = true
@@ -204,24 +206,36 @@ alignment = 1
 
 [node name="CurrentQuota" type="Label" parent="UI/Root/Columns/CenterColumn/InfoPanel/Info" unique_id=2089763444]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme = ExtResource("3_fgk2h")
 theme_override_font_sizes/font_size = 50
 text = "Quota: 120"
+horizontal_alignment = 1
+vertical_alignment = 1
+resize_font_to_fit = true
 
 [node name="CurrentRound" type="Label" parent="UI/Root/Columns/CenterColumn/InfoPanel/Info" unique_id=190982477]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme = ExtResource("3_fgk2h")
 theme_override_font_sizes/font_size = 50
 text = "Round: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+resize_font_to_fit = true
 
 [node name="CurrentSpinsLeft" type="Label" parent="UI/Root/Columns/CenterColumn/InfoPanel/Info" unique_id=360990769]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme = ExtResource("3_fgk2h")
 theme_override_font_sizes/font_size = 50
 text = "Spins Left: 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+resize_font_to_fit = true
 
 [node name="WheelArea" type="Panel" parent="UI/Root/Columns/CenterColumn" unique_id=2004620207]
 unique_name_in_owner = true
@@ -246,30 +260,40 @@ theme = ExtResource("3_fgk2h")
 
 [node name="CharmsLabel" type="Label" parent="UI/Root/Columns/RightPanel/LabelPanel" unique_id=140192662]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("3_fgk2h")
 theme_override_font_sizes/font_size = 50
 text = "Charms (0/5)"
 horizontal_alignment = 1
+vertical_alignment = 1
+resize_font_to_fit = true
 
 [node name="CharmsContainer" type="Panel" parent="UI/Root/Columns/RightPanel" unique_id=51041000]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_fgk2h")
 
-[node name="CharmScrollContainer" type="ScrollContainer" parent="UI/Root/Columns/RightPanel/CharmsContainer" unique_id=638188414]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="UI/Root/Columns/RightPanel/CharmsContainer" unique_id=1209906054]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="CharmScrollContainer" type="ScrollContainer" parent="UI/Root/Columns/RightPanel/CharmsContainer/MarginContainer" unique_id=638188414]
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_fgk2h")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Root/Columns/RightPanel/CharmsContainer/CharmScrollContainer" unique_id=495578541]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Root/Columns/RightPanel/CharmsContainer/MarginContainer/CharmScrollContainer" unique_id=495578541]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -291,21 +315,27 @@ theme = ExtResource("3_fgk2h")
 
 [node name="CurrentChips" type="Label" parent="UI/Root/Columns/RightPanel/CurrencyPanel/MarginContainer/CurrencyContainer" unique_id=76782869]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme = ExtResource("3_fgk2h")
 theme_override_font_sizes/font_size = 70
 text = "Chips: 100"
 horizontal_alignment = 1
+vertical_alignment = 1
 text_overrun_behavior = 3
+resize_font_to_fit = true
 
 [node name="CurrentCash" type="Label" parent="UI/Root/Columns/RightPanel/CurrencyPanel/MarginContainer/CurrencyContainer" unique_id=1807048708]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme = ExtResource("3_fgk2h")
 theme_override_font_sizes/font_size = 70
 text = "Cash: 0$"
 horizontal_alignment = 1
+vertical_alignment = 1
 text_overrun_behavior = 3
+resize_font_to_fit = true
 
 [node name="SkipSpin" type="Button" parent="UI/Root/Columns/RightPanel/CurrencyPanel/MarginContainer/CurrencyContainer" unique_id=1142079455]
 unique_name_in_owner = true
@@ -363,11 +393,14 @@ theme = ExtResource("7_wn26v")
 
 [node name="Title" type="Label" parent="UI/Shop/Margin/Layout" unique_id=508468927]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme = ExtResource("7_wn26v")
 theme_override_font_sizes/font_size = 80
 text = "Choose a Pocket"
 horizontal_alignment = 1
+vertical_alignment = 1
+resize_font_to_fit = true
 
 [node name="Offers" type="HBoxContainer" parent="UI/Shop/Margin/Layout" unique_id=1567998047]
 unique_name_in_owner = true
@@ -393,49 +426,63 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("24_him8o")
 
-[node name="Background" type="ColorRect" parent="UI/EscapeMenu" unique_id=1142079234]
+[node name="Background" type="Panel" parent="UI/EscapeMenu" unique_id=1524932385]
 custom_minimum_size = Vector2(1280, 560)
 layout_mode = 0
 offset_left = 320.0
 offset_top = 280.0
 offset_right = 1600.0
 offset_bottom = 840.0
-color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+theme = ExtResource("27_cmrup")
 
-[node name="LabelContainer" type="VBoxContainer" parent="UI/EscapeMenu/Background" unique_id=8534340]
+[node name="MarginContainer" type="MarginContainer" parent="UI/EscapeMenu/Background" unique_id=356452487]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("27_cmrup")
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
 
-[node name="Label" type="Label" parent="UI/EscapeMenu/Background/LabelContainer" unique_id=496262869]
+[node name="LabelContainer" type="VBoxContainer" parent="UI/EscapeMenu/Background/MarginContainer" unique_id=8534340]
 layout_mode = 2
+theme = ExtResource("27_cmrup")
+
+[node name="Label" type="Label" parent="UI/EscapeMenu/Background/MarginContainer/LabelContainer" unique_id=496262869]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+theme = ExtResource("27_cmrup")
 theme_override_font_sizes/font_size = 50
 text = "Options"
 horizontal_alignment = 1
+vertical_alignment = 1
+resize_font_to_fit = true
+maximum_font_size = 100
 
-[node name="ButtonsContainer" type="VBoxContainer" parent="UI/EscapeMenu/Background" unique_id=957210157]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ButtonsContainer" type="VBoxContainer" parent="UI/EscapeMenu/Background/MarginContainer" unique_id=957210157]
+layout_mode = 2
+theme = ExtResource("27_cmrup")
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Resume" type="Button" parent="UI/EscapeMenu/Background/ButtonsContainer" unique_id=1165157471]
+[node name="Resume" type="Button" parent="UI/EscapeMenu/Background/MarginContainer/ButtonsContainer" unique_id=1165157471]
 layout_mode = 2
+theme = ExtResource("27_cmrup")
 theme_override_font_sizes/font_size = 50
 text = "Resume"
 
-[node name="MainMenu" type="Button" parent="UI/EscapeMenu/Background/ButtonsContainer" unique_id=1257276245]
+[node name="MainMenu" type="Button" parent="UI/EscapeMenu/Background/MarginContainer/ButtonsContainer" unique_id=1257276245]
 layout_mode = 2
+theme = ExtResource("27_cmrup")
 theme_override_font_sizes/font_size = 50
 text = "Main Menu (restarts run)"
 
-[node name="Quit" type="Button" parent="UI/EscapeMenu/Background/ButtonsContainer" unique_id=1989270669]
+[node name="Quit" type="Button" parent="UI/EscapeMenu/Background/MarginContainer/ButtonsContainer" unique_id=1989270669]
 layout_mode = 2
+theme = ExtResource("27_cmrup")
 theme_override_font_sizes/font_size = 50
 text = "Quit"

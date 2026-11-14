@@ -14,7 +14,6 @@ var Source = PocketSet.new()
 var Book = BetBook.new()
 var Buttons = {}
 
-@onready var ChipsLabel: Label = %ChipsLabel
 @onready var NumbersGrid: Container = %NumbersGrid
 @onready var OutsideBets: Container = %OutsideBets
 @onready var ClearButton: Button = %ClearButton
@@ -68,9 +67,7 @@ func _AddButton(Parent: Container, Type: BetType, Tint = Color.WHITE) -> void:
 	if TintByColor and Tint != Color.WHITE: _TintButton(NewButton, Tint)
 
 func _OnClearPressed() -> void: if not Locked: Book.Clear()
-func _RefreshInfo() -> void: 
-	ChipsLabel.text = InfoFormat % Book.TotalStaked()
-	_RefreshStakes()
+func _RefreshInfo() -> void: _RefreshStakes()
 
 func _OnBetPressed(Type: BetType) -> void:
 	if Locked: return

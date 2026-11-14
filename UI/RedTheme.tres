@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://byk11qtanpmjo"]
 
-[ext_resource type="FontFile" uid="uid://clq1j6dwhc0mm" path="res://Assets/JQKAsWild.ttf" id="1_ttu11"]
+[ext_resource type="FontFile" uid="uid://clq1j6dwhc0mm" path="res://Assets/JQKAsWild.ttf" id="1_fiher"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2bgpt"]
 bg_color = Color(0.8, 0.09411765, 0.23529412, 1)
@@ -82,7 +82,7 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
 [resource]
-default_font = ExtResource("1_ttu11")
+default_font = ExtResource("1_fiher")
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_outline_color = Color(0.44313726, 0.003921569, 0.09019608, 1)
 Button/constants/outline_size = 10

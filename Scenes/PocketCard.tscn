@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b3ckfphaafp06"]
 
 [ext_resource type="Script" uid="uid://yan42gppknw5" path="res://Scripts/PocketCard.gd" id="1_0iq12"]
-[ext_resource type="Theme" uid="uid://cxcc76chpa5mv" path="res://UI/ShopTheme.tres" id="1_bj4t4"]
+[ext_resource type="Theme" uid="uid://cxcc76chpa5mv" path="res://UI/GreenTheme.tres" id="1_bj4t4"]
 
 [node name="PocketCard" type="Button" unique_id=2083610773]
 custom_minimum_size = Vector2(300, 400)
@@ -38,6 +38,7 @@ theme = ExtResource("1_bj4t4")
 theme_override_font_sizes/font_size = 40
 text = "Title"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DescriptionLabel" type="Label" parent="Margin/VBoxContainer" unique_id=481710034]
 unique_name_in_owner = true
@@ -47,19 +48,20 @@ theme = ExtResource("1_bj4t4")
 theme_override_font_sizes/font_size = 25
 text = "Description"
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Margin/VBoxContainer" unique_id=1429174831]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Swatch" type="ColorRect" parent="Margin/VBoxContainer/MarginContainer" unique_id=1981870869]
+[node name="Swatch" type="Panel" parent="Margin/VBoxContainer/MarginContainer" unique_id=2076258073]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 250)
+clip_contents = true
 layout_mode = 2
-mouse_filter = 1
-theme = ExtResource("1_bj4t4")
+mouse_filter = 2

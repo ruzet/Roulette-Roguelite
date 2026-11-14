@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://by0iq3msqpg2a"]
 
 [ext_resource type="Script" uid="uid://be5uiybivlw12" path="res://Scripts/CharmCard.gd" id="1_5n5g7"]
-[ext_resource type="Theme" uid="uid://cxcc76chpa5mv" path="res://UI/ShopTheme.tres" id="1_conjy"]
+[ext_resource type="Theme" uid="uid://cxcc76chpa5mv" path="res://UI/GreenTheme.tres" id="1_conjy"]
 
 [node name="CharmCard" type="Button" unique_id=2083610773]
 custom_minimum_size = Vector2(300, 400)
@@ -36,6 +36,7 @@ theme = ExtResource("1_conjy")
 theme_override_font_sizes/font_size = 40
 text = "Title"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CostLabel" type="Label" parent="Margin/VBoxContainer" unique_id=1917405032]
 unique_name_in_owner = true
@@ -44,6 +45,7 @@ theme = ExtResource("1_conjy")
 theme_override_font_sizes/font_size = 40
 text = "Cost"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DescriptionLabel" type="Label" parent="Margin/VBoxContainer" unique_id=481710034]
 unique_name_in_owner = true
@@ -54,4 +56,5 @@ theme = ExtResource("1_conjy")
 theme_override_font_sizes/font_size = 50
 text = "Description"
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
