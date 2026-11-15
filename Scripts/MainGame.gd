@@ -90,7 +90,19 @@ func _WinRound():
 	SkipSpinButton.disabled = false
 	ShopScreen.Open(ShopRNG, Book)
 	
-func _LoseRound(): get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+func _LoseRound(): 
+	%LastChips.text = "Chips: " + str(Book.Balance)
+	%LastQuota.text = "Quota: " + str(Quota)
+	%LastCash.text = "Cash: " + str(Book.Cash) + "$"
+	%LastRound.text = "Round: " + str(Round)
+
+	for Charm in ShopScreen.OwnedCharms:
+		var DisplayCard = ShopScreen.DisplayCharmCardScene.instantiate() as DisplayCharmCard
+		%CharmsContainer.add_child(DisplayCard)
+		DisplayCard.Setup(Charm)
+
+	%EndGame.visible = true
+	
 func _PlaceWheel():
 	var AreaSize = WheelArea.size
 	Wheel.position = AreaSize / 2

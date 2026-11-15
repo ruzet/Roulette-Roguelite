@@ -16,12 +16,12 @@ signal Closed
 @export var CharmTitle = "Buy Charms"
 @export var PocketTitle = "Choose a Pocket"
 @export var CashFormat = "Cash: %d$"
+@export var OwnedCharms: Array = []
 
 @onready var Offers: Container = %Offers
 @onready var TitleLabel: Label = %Title
 @onready var DoneButton: Button = %DoneButton
 
-var OwnedCharms: Array = []
 var _RNG: RandomNumberGenerator
 var _Book: BetBook
 

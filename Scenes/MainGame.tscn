@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://bqnh58n38f7e8" path="res://Scripts/EscapeMenu.gd" id="24_him8o"]
 [ext_resource type="Theme" uid="uid://c4x3nmkqdtaye" path="res://UI/GrayTheme.tres" id="27_cmrup"]
 [ext_resource type="Resource" uid="uid://bu8ynv0xl8t1d" path="res://Charms/PocketDimension.tres" id="28_w42fa"]
+[ext_resource type="Script" uid="uid://0xqpr74qj1dj" path="res://Scenes/EndGameButtons.gd" id="31_w42fa"]
 
 [sub_resource type="Theme" id="Theme_ws5ob"]
 default_font = ExtResource("2_d4f28")
@@ -42,6 +43,14 @@ script = ExtResource("1_321ql")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=240550285]
 
+[node name="Background" type="ColorRect" parent="UI" unique_id=1192282190]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9607843, 0.18431373, 0.34117648, 1)
+
 [node name="Root" type="Control" parent="UI" unique_id=1621934120]
 layout_mode = 3
 anchors_preset = 15
@@ -53,15 +62,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 theme = SubResource("Theme_ws5ob")
-
-[node name="Background" type="ColorRect" parent="UI/Root" unique_id=1192282190]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9607843, 0.18431373, 0.34117648, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Root" unique_id=1211083955]
 layout_mode = 1
@@ -378,6 +378,7 @@ CharmCardScene = ExtResource("14_ylpyt")
 DisplayCharmCardScene = ExtResource("13_wyocf")
 CharmPool = Array[ExtResource("12_yr2pg")]([ExtResource("15_yc6xl"), ExtResource("16_k6vqf"), ExtResource("13_ylpyt"), ExtResource("18_ev6kq"), ExtResource("22_glaac"), ExtResource("23_7p2u3"), ExtResource("28_w42fa")])
 CharmOfferCount = 5
+OwnedCharms = [ExtResource("13_ylpyt")]
 
 [node name="Background" type="ColorRect" parent="UI/Shop" unique_id=1604025868]
 layout_mode = 1
@@ -497,6 +498,156 @@ theme_override_font_sizes/font_size = 50
 text = "Main Menu (restarts run)"
 
 [node name="Quit" type="Button" parent="UI/EscapeMenu/Background/MarginContainer/ButtonsContainer" unique_id=1989270669]
+layout_mode = 2
+theme = ExtResource("27_cmrup")
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="EndGame" type="Control" parent="UI" unique_id=1504105689]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("31_w42fa")
+
+[node name="Background" type="Panel" parent="UI/EndGame" unique_id=1386248180]
+layout_mode = 0
+offset_left = 657.0
+offset_top = 133.0
+offset_right = 1263.0
+offset_bottom = 987.0
+mouse_filter = 2
+theme = ExtResource("27_cmrup")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/EndGame/Background" unique_id=1471356914]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("27_cmrup")
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="StatsContainer" type="VBoxContainer" parent="UI/EndGame/Background/MarginContainer" unique_id=1280781634]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("27_cmrup")
+
+[node name="Title" type="Label" parent="UI/EndGame/Background/MarginContainer/StatsContainer" unique_id=1288727348]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+theme = ExtResource("27_cmrup")
+theme_override_font_sizes/font_size = 50
+text = "You Lose!"
+horizontal_alignment = 1
+vertical_alignment = 1
+resize_font_to_fit = true
+maximum_font_size = 100
+
+[node name="LastChips" type="Label" parent="UI/EndGame/Background/MarginContainer/StatsContainer" unique_id=1782803645]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("27_cmrup")
+theme_override_font_sizes/font_size = 50
+text = "Chips: -"
+horizontal_alignment = 1
+vertical_alignment = 1
+resize_font_to_fit = true
+maximum_font_size = 100
+
+[node name="LastQuota" type="Label" parent="UI/EndGame/Background/MarginContainer/StatsContainer" unique_id=150928511]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("27_cmrup")
+theme_override_font_sizes/font_size = 50
+text = "Quota: -"
+horizontal_alignment = 1
+vertical_alignment = 1
+resize_font_to_fit = true
+maximum_font_size = 100
+
+[node name="LastCash" type="Label" parent="UI/EndGame/Background/MarginContainer/StatsContainer" unique_id=715261900]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("27_cmrup")
+theme_override_font_sizes/font_size = 50
+text = "Cash: -$"
+horizontal_alignment = 1
+vertical_alignment = 1
+resize_font_to_fit = true
+maximum_font_size = 100
+
+[node name="LastRound" type="Label" parent="UI/EndGame/Background/MarginContainer/StatsContainer" unique_id=1614278480]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("27_cmrup")
+theme_override_font_sizes/font_size = 50
+text = "Round: -"
+horizontal_alignment = 1
+vertical_alignment = 1
+resize_font_to_fit = true
+maximum_font_size = 100
+
+[node name="LastCharms" type="Label" parent="UI/EndGame/Background/MarginContainer/StatsContainer" unique_id=2131355539]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("27_cmrup")
+theme_override_font_sizes/font_size = 50
+text = "Charms:"
+horizontal_alignment = 1
+vertical_alignment = 1
+resize_font_to_fit = true
+maximum_font_size = 100
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/EndGame/Background/MarginContainer/StatsContainer" unique_id=1722966076]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_horizontal = 17
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/EndGame/Background/MarginContainer/StatsContainer/ScrollContainer" unique_id=1818663995]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CharmsContainer" type="HBoxContainer" parent="UI/EndGame/Background/MarginContainer/StatsContainer/ScrollContainer/MarginContainer" unique_id=1624665079]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 17
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="UI/EndGame/Background/MarginContainer" unique_id=1293203262]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("27_cmrup")
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="MainMenu" type="Button" parent="UI/EndGame/Background/MarginContainer/ButtonsContainer" unique_id=1100199894]
+layout_mode = 2
+theme = ExtResource("27_cmrup")
+theme_override_font_sizes/font_size = 50
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="UI/EndGame/Background/MarginContainer/ButtonsContainer" unique_id=546214532]
 layout_mode = 2
 theme = ExtResource("27_cmrup")
 theme_override_font_sizes/font_size = 50
