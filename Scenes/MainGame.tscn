@@ -30,7 +30,7 @@
 [ext_resource type="Script" uid="uid://bqnh58n38f7e8" path="res://Scripts/EscapeMenu.gd" id="24_him8o"]
 [ext_resource type="Theme" uid="uid://c4x3nmkqdtaye" path="res://UI/GrayTheme.tres" id="27_cmrup"]
 [ext_resource type="Resource" uid="uid://bu8ynv0xl8t1d" path="res://Charms/PocketDimension.tres" id="28_w42fa"]
-[ext_resource type="Script" uid="uid://0xqpr74qj1dj" path="res://Scenes/EndGameButtons.gd" id="31_w42fa"]
+[ext_resource type="Script" uid="uid://0xqpr74qj1dj" path="res://Scripts/EndGameButtons.gd" id="31_w42fa"]
 
 [sub_resource type="Theme" id="Theme_ws5ob"]
 default_font = ExtResource("2_d4f28")
@@ -378,7 +378,6 @@ CharmCardScene = ExtResource("14_ylpyt")
 DisplayCharmCardScene = ExtResource("13_wyocf")
 CharmPool = Array[ExtResource("12_yr2pg")]([ExtResource("15_yc6xl"), ExtResource("16_k6vqf"), ExtResource("13_ylpyt"), ExtResource("18_ev6kq"), ExtResource("22_glaac"), ExtResource("23_7p2u3"), ExtResource("28_w42fa")])
 CharmOfferCount = 5
-OwnedCharms = [ExtResource("13_ylpyt")]
 
 [node name="Background" type="ColorRect" parent="UI/Shop" unique_id=1604025868]
 layout_mode = 1
