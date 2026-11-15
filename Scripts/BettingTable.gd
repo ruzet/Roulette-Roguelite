@@ -18,9 +18,7 @@ var Buttons = {}
 @onready var OutsideBets: Container = %OutsideBets
 @onready var ClearButton: Button = %ClearButton
 
-func _ready() -> void:
-	ClearButton.pressed.connect(_OnClearPressed)
-
+func _ready() -> void: ClearButton.pressed.connect(_OnClearPressed)
 func Bind(NewSource: PocketSet, NewBook: BetBook) -> void:
 	Source = NewSource
 	Book = NewBook
@@ -68,7 +66,6 @@ func _AddButton(Parent: Container, Type: BetType, Tint = Color.WHITE) -> void:
 
 func _OnClearPressed() -> void: if not Locked: Book.Clear()
 func _RefreshInfo() -> void: _RefreshStakes()
-
 func _OnBetPressed(Type: BetType) -> void:
 	if Locked: return
 	if Book.PlaceBet(Type, ChipValue): BetPlaced.emit(Type)

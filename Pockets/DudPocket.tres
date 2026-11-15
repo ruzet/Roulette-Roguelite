@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PocketTemplate" format=3 uid="uid://kr7i4xbrq5ue"]
+
+[ext_resource type="Script" uid="uid://bm0mpjsxirtws" path="res://Scripts/PocketEffect.gd" id="1_ht7qy"]
+[ext_resource type="Script" uid="uid://c8psdmxjdupve" path="res://Scripts/PocketTemplate.gd" id="2_8ap3c"]
+
+[resource]
+script = ExtResource("2_8ap3c")
+Title = "Dud"
+Description = "0x Payout"
+ColorID = &"Gray"
+DisplayColor = Color(0.20392157, 0.20392157, 0.20392157, 1)
+ShopWeight = 3.0
+PayoutMultiplier = 0.0
+metadata/_custom_type_script = "uid://c8psdmxjdupve"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PocketTemplate" format=3 uid="uid://1pouovvbo66t"]
+
+[ext_resource type="Script" uid="uid://bm0mpjsxirtws" path="res://Scripts/PocketEffect.gd" id="1_yi812"]
+[ext_resource type="Script" uid="uid://c8psdmxjdupve" path="res://Scripts/PocketTemplate.gd" id="2_qibn4"]
+
+[resource]
+script = ExtResource("2_qibn4")
+Title = "Jackpot"
+Description = "Low chance for a ball to land
+5x Payout"
+ColorID = &"Yellow"
+DisplayColor = Color(1, 0.92578125, 0, 1)
+BaseWeight = 0.5
+PayoutMultiplier = 5.0
+metadata/_custom_type_script = "uid://c8psdmxjdupve"

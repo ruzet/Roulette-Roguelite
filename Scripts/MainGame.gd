@@ -16,19 +16,18 @@ var Book := BetBook.new()
 var ShopRNG = RandomNumberGenerator.new()
 var StakeIndex = 1
 var QuotaDict: Dictionary = {
-	1: 150,
-	2: 250,
-	3: 500,
-	4: 1000,
-	5: 1750,
-	6: 3250
+	1: 120,
+	2: 180,
+	3: 250,
+	4: 400,
+	5: 550,
+	6: 750
 }
 
 var Round = 1
 var SpinsLeft = 3
 var SpinsGiven = 3
 var CashPerSkip = 2
-var CharmsLimit = 5
 var Quota = 0
 
 func _ready() -> void:
@@ -70,7 +69,7 @@ func RemoveCharm(Charm: CharmData):
 
 func _UpdateRound():
 	Round += 1
-	Quota = QuotaDict[Round] if QuotaDict.has(Round) else Quota * 2
+	Quota = QuotaDict[Round] if QuotaDict.has(Round) else Quota * 1.15
 	Book.Cash += 3
 	SpinsLeft = SpinsGiven
 	_UpdateLabels()
@@ -85,7 +84,7 @@ func _UpdateLabels():
 	%CurrentRound.text = "Round: " + str(Round)
 	%CurrentSpinsLeft.text = "Spins Left: " + str(SpinsLeft)
 	%CurrentQuota.text = "Quota: " + str(Quota)
-	%CharmsLabel.text = "Charms (" + str(ShopScreen.OwnedCharms.size()) + "/" + str(CharmsLimit) + ")"
+	%CharmsLabel.text = "Charms (" + str(ShopScreen.OwnedCharms.size()) + "/" + str(ShopScreen.CharmLimit) + ")"
 
 func _WinRound():
 	SkipSpinButton.disabled = false
@@ -118,6 +117,7 @@ func _SkipSpin():
 func _OnSpinPressed() -> void:
 	if Wheel.Spinning or Book.Bets.is_empty() or SpinsLeft <= 0: return
 	Table.Locked = true
+	SkipSpinButton.disabled = true
 	ResultLabel.text = "Spinning..."
 	Wheel.Spin()
 	SpinsLeft -= 1
@@ -128,6 +128,7 @@ func _OnSpinFinished(Results: Array[PocketData]) -> void:
 	var R := Book.ResolveBets(Results)
 	SpinResolved.emit(R)
 	Table.Locked = false
+	SkipSpinButton.disabled = false
 	var Numbers := ", ".join(Results.map(func(P): return str(P.Number)))
 	ResultLabel.text = ResultFormat % [Numbers, R.Net]
 	if Book.Balance <= 0: 

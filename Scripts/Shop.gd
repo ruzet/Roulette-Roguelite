@@ -7,6 +7,7 @@ signal Closed
 
 @export var PocketPool: Array[PocketTemplate] = []
 @export var OfferCount = 3
+@export var CharmLimit = 5
 @export var CardScene: PackedScene
 @export var CharmCardScene: PackedScene
 @export var DisplayCharmCardScene: PackedScene
@@ -100,7 +101,6 @@ func _OnCharmChosen(Charm: CharmData, Card: CharmCard):
 	_Book.Changed.emit()
 	Card.MarkSold()
 	CharmBought.emit(Charm)
-	OwnedCharms.append(Charm)
 	var DisplayCard = DisplayCharmCardScene.instantiate() as DisplayCharmCard
 	%CharmScrollContainer/VBoxContainer.add_child(DisplayCard)
 	DisplayCard.Setup(Charm)
